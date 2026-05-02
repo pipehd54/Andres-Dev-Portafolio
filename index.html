@@ -2,207 +2,466 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Portafolio web, desarrollador de software.</title>
+    <title>Andrés Timote | Desarrollador Junior - Python, FastAPI, SQL</title>
     <meta name="viewport" content="width=device-width">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#5debf8">
-    <meta name="description" content="Portafolio profesional de Andrés Timote, estudiante de desarrollo de software.">
-    <meta property="og:title" content="Portafolio de un Desarrolllador de Software">
-    <meta property="og:image" content="">
-    <meta property="og:image:alt" content="Una imagen del logo HTML">
+    <meta name="theme-color" content="#f5f5f5">
+    <meta name="description" content="Portafolio de Andrés Timote, desarrollador junior especializado en Python, FastAPI y SQL. Busco oportunidades para crecer como Software Developer.">
+    <meta property="og:title" content="Portafolio de Andrés Timote | Desarrollador Junior">
+    <meta property="og:image" content="imagenes/imagen2.jpg">
+    <meta property="og:image:alt" content="Foto de perfil de Andrés Timote, desarrollador junior">
     <link rel="icon" type="image/png" href="imagenes/imagen2.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <!-- =========================
-         Navegación
-    ========================= -->
-    <nav>
-        <div class="logo">AT</div>
-        <ul class="nav-links">
-            <li><a href="#sobre">Sobre mí</a></li>
-            <li><a href="#conocimientos">Conocimientos</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
-
-    <!-- =========================
-         Redes Sociales
-    ========================= -->
-    <div class="social-links">
-        <a href="https://github.com/pipehd54" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/andr%C3%A9s-felipe-timote-daza-70052522b/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/4ndres._co/" target="_blank"><i class="fab fa-instagram"></i></a>
-    </div>
-
-    <!-- =========================
-         Email Fijo
-    ========================= -->
-    <div class="email-link">
-        <a href="mailto:pipetimoty@gmail.com">pipetimoty@gmailcom</a>
-    </div>
-
-    <div class="container">
-        <!-- =========================
-             Hero Section
-        ========================= -->
-        <section class="hero">
-            <p class="hero-intro">Hola, mi nombre es</p>
-            <h1 class="hero-name">Andrés Timote.</h1>
-            <h2 class="hero-subtitle">Construyo experiencias digitales.</h2>
-            <p class="hero-description">
-                Soy un desarrollador de Software en formacion donde actualmente me encuentro estudiando en la Corporacion Universitaria 
-                Centro Superior Unicuces.
-            </p>
-            <a href="#proyectos" class="cta-button">¡Mira mi trabajo!</a>
-        </section>
-
-        <!-- =========================
-             Sobre mí
-        ========================= -->
-        <section id="sobre">
-            <h2 class="section-title">Sobre mí</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        ¡Hola! Mi nombre es Andrés y vivo en Cali, Colombia. Disfruto desarrollando paginas web, pero tambien tengo un fuerte interes en el desarrollo Backend y Frontend. 
-                        Mi interés en el desarrollo comenzo al querer crear mi primera página web, lo que me llevó a descubrir el mundo del HTML y CSS.
-                    </p>
-                    <p>
-                        Avanzando rápidamente hasta hoy, he tenido el privilegio de trabajar en 
-                        varios proyectos personales que me han permitido crecer como desarrollador. 
-                        Mi enfoque principal estos días está en mejorar mi lógica de programación 
-                        y aprender nuevas tecnologías.
-                    </p>
-                    <p>
-                        Aquí tienes algunas tecnologías con las que he estado trabajando recientemente:
-                    </p>
-                    <div class="skills-grid">
-                        <div class="skill-item">JavaScript (ES6+)</div>
-                        <div class="skill-item">Python</div>
-                        <div class="skill-item">HTML & CSS</div>
-                        <div class="skill-item">Django (aun en proceso)</div>
-                        <div class="skill-item">SQL (aun en proceso)</div>
-                        <div class="skill-item">Git & GitHub</div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div style="width: 100%; height: 300px; background-color: var(--hover); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: var(--subtext);">
-                        <img src="imagenes/imagen2.jpg">
-                    </div>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <h1 class="site-title">ANDRÉS | SOFTWARE DEVELOPER</h1>
+            <div class="header-right">
+                <nav class="header-nav">
+                    <a href="#introduction" data-i18n="nav.introduction">Introduction</a>
+                    <a href="#skills" data-i18n="nav.about">About</a>
+                    <a href="#projects" data-i18n="nav.projects">Projects</a>
+                    <a href="#contact" data-i18n="nav.contact">Contact</a>
+                </nav>
+                <div class="language-toggle">
+                    <button class="lang-btn" data-lang="en" title="English">EN</button>
+                    <span class="lang-separator">/</span>
+                    <button class="lang-btn" data-lang="es" title="Español">ES</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- =========================
-             Proyectos
-        ========================= -->
-        <section id="proyectos">
-            <h2 class="section-title">Algunas cosas que he construido</h2>
-            
-            <div class="project-item">
-                <div class="project-content">
-                    <p class="project-overline">Proyecto Destacado</p>
-                    <h3 class="project-title">Portafolio Personal</h3>
-                    <div class="project-description">
-                        Un portafolio web limpio y moderno construido con HTML y CSS puro. 
-                        Presenta un diseño responsive y una experiencia de usuario intuitiva 
-                        para mostrar mis proyectos y habilidades como desarrollador.
-                    </div>
-                    <div class="project-tech">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
+    <div class="layout-wrapper">
+        <!-- Sidebar de Navegación -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <h3 data-i18n="sidebar.introduction">INTRODUCTION</h3>
+                    <ul>
+                        <li><a href="#introduction" data-i18n="sidebar.dev_intro">Developer Introduction</a></li>
+                    </ul>
                 </div>
-                <div class="project-image">
-                    <div style="width: 100%; height: 300px; background-color: var(--hover); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--subtext);">
-                        <img src="imagenes/imagen3.png">
-                    </div>
+                <div class="sidebar-section">
+                    <h3 data-i18n="sidebar.skills">TECHNICAL SKILLS</h3>
+                    <ul>
+                        <li><a href="#skills" data-i18n="sidebar.languages">Languages</a></li>
+                        <li><a href="#skills" data-i18n="sidebar.backend">Backend</a></li>
+                        <li><a href="#skills" data-i18n="sidebar.frontend">Frontend</a></li>
+                        <li><a href="#skills" data-i18n="sidebar.tools">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3 data-i18n="sidebar.projects">PROJECTS</h3>
+                    <ul>
+                        <li><a href="#projects" data-i18n="sidebar.portfolio">Portafolio Personal</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3 data-i18n="sidebar.touch">GET IN TOUCH</h3>
+                    <ul>
+                        <li><a href="#contact" data-i18n="sidebar.contact_link">Contact</a></li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </aside>
 
-        <!-- =========================
-             Contacto
-        ========================= -->
-        <section id="contacto" class="contact">
-            <p class="contact-overline">¿Qué sigue?</p>
-            <h2 class="contact-title">Ponte en contacto</h2>
-            <p class="contact-description">
-                Actualmente estoy buscando nuevas oportunidades, mi bandeja de entrada siempre 
-                está abierta. Ya sea que tengas una pregunta o solo quieras saludar, 
-                ¡haré todo lo posible por responderte!
-            </p>
-            <a href="mailto:pipetimoty@gmail.com class="cta-button">¡Salúdame!</a>
-        </section>
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <!-- INTRODUCTION Section -->
+            <section id="introduction" class="content-section">
+                <div class="section-header">
+                    <h2 data-i18n="intro.title">Developer Introduction</h2>
+                </div>
+                <div class="two-column">
+                    <div class="left-column">
+                        <p data-i18n="intro.p1">
+                            Andrés, Software Developer based in Cali, Colombia.
+                        </p>
+                        <p data-i18n="intro.p2">
+                            Focused on designing efficient, secure, and scalable system architectures.
+                        </p>
+                        <p data-i18n="intro.p3">
+                            Currently specializing in building robust APIs with FastAPI & Python, managing persistent data with SQL, and enhancing interfaces via JavaScript. Passionate about logic, security, and optimizing administrative workflows.
+                        </p>
+                        <div class="cta-section">
+                            <a href="https://github.com/pipehd54" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/andr%C3%A9s-felipe-timote-daza-70052522b/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="mailto:pipetimoty@gmail.com" class="btn btn-primary" data-i18n="intro.touch_btn">
+                                Get in Touch
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right-column">
+                        <div class="spec-box">
+                            <div class="spec-box-title" data-i18n="intro.resource_title">Resource: Developer Profile</div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="intro.name_label">NAME:</span>
+                                <span class="spec-value">Andrés Felipe Timote Daza</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="intro.location_label">LOCATION:</span>
+                                <span class="spec-value">Cali, Colombia</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="intro.status_label">STATUS:</span>
+                                <span class="spec-value" data-i18n="intro.status_value">Junior Developer</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="intro.focus_label">FOCUS:</span>
+                                <span class="spec-value" data-i18n="intro.focus_value">Backend & System Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TECHNICAL SKILLS Section -->
+            <section id="skills" class="content-section">
+                <div class="section-header">
+                    <h2 data-i18n="skills.title">Technical Skills</h2>
+                </div>
+                <div class="two-column">
+                    <div class="left-column">
+                        <h4 data-i18n="skills.frameworks_title">Languages & Frameworks</h4>
+                        <p data-i18n="skills.frameworks_desc">
+                            I work with Python as my primary language, complemented by JavaScript for frontend development. I use FastAPI for building robust backend APIs and SQL for database management.
+                        </p>
+                    </div>
+                    <div class="right-column">
+                        <div class="spec-box">
+                            <div class="spec-box-title" data-i18n="skills.stack_title">Tech Stack</div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="skills.languages_label">LANGUAGES:</span>
+                                <span class="spec-value">Python, JavaScript (ES6+)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="skills.backend_label">BACKEND:</span>
+                                <span class="spec-value">FastAPI, SQL</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="skills.frontend_label">FRONTEND:</span>
+                                <span class="spec-value">HTML, CSS, JavaScript</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="skills.tools_label">TOOLS:</span>
+                                <span class="spec-value">Git & GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJECTS Section -->
+            <section id="projects" class="content-section">
+                <div class="section-header">
+                    <h2 data-i18n="projects.title">Featured Projects</h2>
+                </div>
+                <div class="two-column">
+                    <div class="left-column">
+                        <h4 data-i18n="projects.portfolio_title">Portafolio Personal</h4>
+                        <p data-i18n="projects.portfolio_p1">
+                            A clean and modern portfolio website built with pure HTML and CSS. Features a responsive design and intuitive user experience to showcase projects and skills as a developer.
+                        </p>
+                        <p data-i18n="projects.portfolio_p2">
+                            This project demonstrates my attention to detail, understanding of responsive design, and ability to create professional web experiences from scratch.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/pipehd54/Andres-Dev-Portafolio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" data-i18n="projects.view_code">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right-column">
+                        <div class="spec-box">
+                            <div class="spec-box-title" data-i18n="projects.details_title">Project Details</div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="projects.type_label">TYPE:</span>
+                                <span class="spec-value" data-i18n="projects.type_value">Frontend Portfolio</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="projects.stack_label">STACK:</span>
+                                <span class="spec-value">HTML, CSS, JS</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="projects.features_label">FEATURES:</span>
+                                <span class="spec-value" data-i18n="projects.features_value">Responsive, Smooth Scroll</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="projects.status_label">STATUS:</span>
+                                <span class="spec-value" data-i18n="projects.status_value">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT Section -->
+            <section id="contact" class="content-section">
+                <div class="section-header">
+                    <h2 data-i18n="contact.title">Get in Touch</h2>
+                </div>
+                <div class="two-column">
+                    <div class="left-column">
+                        <p data-i18n="contact.p1">
+                            Currently open to Junior Developer opportunities. If you want to discuss a job opening, project, or collaboration, I'd be happy to chat with you.
+                        </p>
+                        <p>
+                            <span data-i18n="contact.p2_start">Drop me a message at</span>
+                            <strong>pipetimoty@gmail.com</strong>
+                            <span data-i18n="contact.p2_end">and I'll get back to you as soon as possible.</span>
+                        </p>
+                        <div class="cta-section">
+                            <a href="mailto:pipetimoty@gmail.com" class="btn btn-primary" data-i18n="contact.email_btn">Send Email</a>
+                        </div>
+                    </div>
+                    <div class="right-column">
+                        <div class="spec-box">
+                            <div class="spec-box-title" data-i18n="contact.info_title">Contact Information</div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="contact.email_label">EMAIL:</span>
+                                <span class="spec-value">pipetimoty@gmail.com</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="contact.github_label">GITHUB:</span>
+                                <span class="spec-value">github.com/pipehd54</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="contact.linkedin_label">LINKEDIN:</span>
+                                <span class="spec-value">linkedin.com/in/andrés...</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-key" data-i18n="contact.location_label">LOCATION:</span>
+                                <span class="spec-value">Cali, Colombia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="main-footer">
+                <p data-i18n="footer">Designed and built by Andrés Timote © 2024</p>
+            </footer>
+        </main>
     </div>
 
-    <!-- =========================
-         Footer
-    ========================= -->
-    <footer>
-        <p>Diseñado y construido por Andrés Timote</p>
-    </footer>
-
-    <!-- =========================
-         Scripts
-    ========================= -->
     <script>
-        // Mobile menu toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const menuBtn = document.querySelector('.menu-btn');
-            
-            navLinks.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const menuBtn = document.querySelector('.menu-btn');
-            
-            navLinks.classList.remove('active');
-            menuBtn.classList.remove('active');
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const navLinks = document.getElementById('navLinks');
-            const menuBtn = document.querySelector('.menu-btn');
-            
-            if (!e.target.closest('nav')) {
-                navLinks.classList.remove('active');
-                menuBtn.classList.remove('active');
+        // ========================================
+        // TRANSLATION SYSTEM
+        // ========================================
+        const translations = {
+            en: {
+                'nav.introduction': 'Introduction',
+                'nav.about': 'About',
+                'nav.projects': 'Projects',
+                'nav.contact': 'Contact',
+                'sidebar.introduction': 'INTRODUCTION',
+                'sidebar.dev_intro': 'Developer Introduction',
+                'sidebar.skills': 'TECHNICAL SKILLS',
+                'sidebar.languages': 'Languages',
+                'sidebar.backend': 'Backend',
+                'sidebar.frontend': 'Frontend',
+                'sidebar.tools': 'Tools',
+                'sidebar.projects': 'PROJECTS',
+                'sidebar.portfolio': 'Portafolio Personal',
+                'sidebar.touch': 'GET IN TOUCH',
+                'sidebar.contact_link': 'Contact',
+                'intro.title': 'Developer Introduction',
+                'intro.p1': 'Andrés, Software Developer based in Cali, Colombia.',
+                'intro.p2': 'Focused on designing efficient, secure, and scalable system architectures.',
+                'intro.p3': 'Currently specializing in building robust APIs with FastAPI & Python, managing persistent data with SQL, and enhancing interfaces via JavaScript. Passionate about logic, security, and optimizing administrative workflows.',
+                'intro.touch_btn': 'Get in Touch',
+                'intro.resource_title': 'Resource: Developer Profile',
+                'intro.name_label': 'NAME:',
+                'intro.location_label': 'LOCATION:',
+                'intro.status_label': 'STATUS:',
+                'intro.status_value': 'Junior Developer',
+                'intro.focus_label': 'FOCUS:',
+                'intro.focus_value': 'Backend & System Design',
+                'skills.title': 'Technical Skills',
+                'skills.frameworks_title': 'Languages & Frameworks',
+                'skills.frameworks_desc': 'I work with Python as my primary language, complemented by JavaScript for frontend development. I use FastAPI for building robust backend APIs and SQL for database management.',
+                'skills.stack_title': 'Tech Stack',
+                'skills.languages_label': 'LANGUAGES:',
+                'skills.backend_label': 'BACKEND:',
+                'skills.frontend_label': 'FRONTEND:',
+                'skills.tools_label': 'TOOLS:',
+                'projects.title': 'Featured Projects',
+                'projects.portfolio_title': 'Portafolio Personal',
+                'projects.portfolio_p1': 'A clean and modern portfolio website built with pure HTML and CSS. Features a responsive design and intuitive user experience to showcase projects and skills as a developer.',
+                'projects.portfolio_p2': 'This project demonstrates my attention to detail, understanding of responsive design, and ability to create professional web experiences from scratch.',
+                'projects.view_code': 'View Code',
+                'projects.details_title': 'Project Details',
+                'projects.type_label': 'TYPE:',
+                'projects.type_value': 'Frontend Portfolio',
+                'projects.stack_label': 'STACK:',
+                'projects.features_label': 'FEATURES:',
+                'projects.features_value': 'Responsive, Smooth Scroll',
+                'projects.status_label': 'STATUS:',
+                'projects.status_value': 'Completed',
+                'contact.title': 'Get in Touch',
+                'contact.p1': 'Currently open to Junior Developer opportunities. If you want to discuss a job opening, project, or collaboration, I\'d be happy to chat with you.',
+                'contact.p2_start': 'Drop me a message at',
+                'contact.p2_end': 'and I\'ll get back to you as soon as possible.',
+                'contact.email_btn': 'Send Email',
+                'contact.info_title': 'Contact Information',
+                'contact.email_label': 'EMAIL:',
+                'contact.github_label': 'GITHUB:',
+                'contact.linkedin_label': 'LINKEDIN:',
+                'contact.location_label': 'LOCATION:',
+                'footer': 'Designed and built by Andrés Timote © 2024'
+            },
+            es: {
+                'nav.introduction': 'Introducción',
+                'nav.about': 'Acerca de',
+                'nav.projects': 'Proyectos',
+                'nav.contact': 'Contacto',
+                'sidebar.introduction': 'INTRODUCCIÓN',
+                'sidebar.dev_intro': 'Presentación de Desarrollador',
+                'sidebar.skills': 'HABILIDADES TÉCNICAS',
+                'sidebar.languages': 'Lenguajes',
+                'sidebar.backend': 'Backend',
+                'sidebar.frontend': 'Frontend',
+                'sidebar.tools': 'Herramientas',
+                'sidebar.projects': 'PROYECTOS',
+                'sidebar.portfolio': 'Portafolio Personal',
+                'sidebar.touch': 'PONTE EN CONTACTO',
+                'sidebar.contact_link': 'Contacto',
+                'intro.title': 'Presentación de Desarrollador',
+                'intro.p1': 'Andrés, Desarrollador de Software basado en Cali, Colombia.',
+                'intro.p2': 'Enfocado en diseñar arquitecturas de sistemas eficientes, seguras y escalables.',
+                'intro.p3': 'Actualmente especializándome en construir APIs robustas con FastAPI y Python, gestionar datos persistentes con SQL y mejorar interfaces con JavaScript. Apasionado por la lógica, la seguridad y la optimización de flujos de trabajo administrativos.',
+                'intro.touch_btn': 'Contáctame',
+                'intro.resource_title': 'Recurso: Perfil de Desarrollador',
+                'intro.name_label': 'NOMBRE:',
+                'intro.location_label': 'UBICACIÓN:',
+                'intro.status_label': 'ESTADO:',
+                'intro.status_value': 'Desarrollador Junior',
+                'intro.focus_label': 'ENFOQUE:',
+                'intro.focus_value': 'Backend y Diseño de Sistemas',
+                'skills.title': 'Habilidades Técnicas',
+                'skills.frameworks_title': 'Lenguajes y Frameworks',
+                'skills.frameworks_desc': 'Trabajo con Python como mi lenguaje principal, complementado con JavaScript para desarrollo frontend. Utilizo FastAPI para construir APIs backend robustas y SQL para gestión de bases de datos.',
+                'skills.stack_title': 'Stack Técnico',
+                'skills.languages_label': 'LENGUAJES:',
+                'skills.backend_label': 'BACKEND:',
+                'skills.frontend_label': 'FRONTEND:',
+                'skills.tools_label': 'HERRAMIENTAS:',
+                'projects.title': 'Proyectos Destacados',
+                'projects.portfolio_title': 'Portafolio Personal',
+                'projects.portfolio_p1': 'Un sitio web de portafolio limpio y moderno construido con HTML y CSS puro. Cuenta con un diseño responsivo y una experiencia de usuario intuitiva para mostrar proyectos y habilidades como desarrollador.',
+                'projects.portfolio_p2': 'Este proyecto demuestra mi atención al detalle, comprensión del diseño responsivo y capacidad para crear experiencias web profesionales desde cero.',
+                'projects.view_code': 'Ver Código',
+                'projects.details_title': 'Detalles del Proyecto',
+                'projects.type_label': 'TIPO:',
+                'projects.type_value': 'Portafolio Frontend',
+                'projects.stack_label': 'STACK:',
+                'projects.features_label': 'CARACTERÍSTICAS:',
+                'projects.features_value': 'Responsivo, Desplazamiento Suave',
+                'projects.status_label': 'ESTADO:',
+                'projects.status_value': 'Completado',
+                'contact.title': 'Ponte en Contacto',
+                'contact.p1': 'Actualmente abierto a oportunidades como Desarrollador Junior. Si quieres hablar sobre una vacante, proyecto o colaboración, estaré encantado de conversar contigo.',
+                'contact.p2_start': 'Envíame un mensaje a',
+                'contact.p2_end': 'y te responderé lo antes posible.',
+                'contact.email_btn': 'Enviar Email',
+                'contact.info_title': 'Información de Contacto',
+                'contact.email_label': 'EMAIL:',
+                'contact.github_label': 'GITHUB:',
+                'contact.linkedin_label': 'LINKEDIN:',
+                'contact.location_label': 'UBICACIÓN:',
+                'footer': 'Diseñado y construido por Andrés Timote © 2024'
             }
+        };
+
+        // Get saved language or default to 'en'
+        let currentLang = localStorage.getItem('language') || 'en';
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+            updateLanguageButtons();
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // Function to set language
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            updateLanguageButtons();
+        }
+
+        // Update language button states
+        function updateLanguageButtons() {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === currentLang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Add click listeners to language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.getAttribute('data-lang'));
             });
         });
 
-        // Add scroll effects
+        // ========================================
+        // EXISTING FUNCTIONALITY
+        // ========================================
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Highlight active section in sidebar
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const nav = document.querySelector('nav');
-            
-            if (scrolled > 50) {
-                nav.style.boxShadow = '0 10px 30px -10px rgba(2, 12, 27, 0.7)';
-            } else {
-                nav.style.boxShadow = 'none';
-            }
+            const sections = document.querySelectorAll('.content-section');
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
