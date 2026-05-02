@@ -56,6 +56,7 @@ const translations = {
         'contact.p2_start': 'Drop me a message at',
         'contact.p2_end': 'and I\'ll get back to you as soon as possible.',
         'contact.email_btn': 'Send Email',
+        'contact.download_cv': 'Download CV',
         'contact.info_title': 'Contact Information',
         'contact.email_label': 'EMAIL:',
         'contact.github_label': 'GITHUB:',
@@ -117,6 +118,7 @@ const translations = {
         'contact.p2_start': 'Envíame un mensaje a',
         'contact.p2_end': 'y te responderé lo antes posible.',
         'contact.email_btn': 'Enviar Email',
+        'contact.download_cv': 'Descargar CV',
         'contact.info_title': 'Información de Contacto',
         'contact.email_label': 'EMAIL:',
         'contact.github_label': 'GITHUB:',
@@ -148,6 +150,14 @@ function setLanguage(lang) {
     });
     
     updateLanguageButtons();
+
+    // Update CV download links based on language
+    document.querySelectorAll('.download-cv').forEach(el => {
+        const enHref = el.getAttribute('data-cv-en');
+        const esHref = el.getAttribute('data-cv-es');
+        if (lang === 'es' && esHref) el.setAttribute('href', esHref);
+        else if (lang === 'en' && enHref) el.setAttribute('href', enHref);
+    });
 }
 
 // Update language button states
@@ -165,6 +175,16 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         setLanguage(btn.getAttribute('data-lang'));
     });
+});
+
+// Track CV download clicks (simple console log; replace with analytics if needed)
+document.addEventListener('click', (e) => {
+    const el = e.target.closest && e.target.closest('.download-cv');
+    if (el) {
+        console.log('CV download clicked:', el.getAttribute('href'));
+        // Example: send to analytics endpoint
+        // fetch('/api/track', { method: 'POST', body: JSON.stringify({ event: 'cv_download', href: el.href }) });
+    }
 });
 
 // ========================================
