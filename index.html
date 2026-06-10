@@ -7,12 +7,13 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#f5f5f5">
     <meta name="description" content="Portafolio de Andrés Timote, desarrollador junior especializado en Python, FastAPI y SQL. Busco oportunidades para crecer como Software Developer.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; frame-ancestors 'none';">
     <meta property="og:title" content="Portafolio de Andrés Timote | Desarrollador Junior">
     <meta property="og:image" content="imagenes/imagen2.jpg">
     <meta property="og:image:alt" content="Foto de perfil de Andrés Timote, desarrollador junior">
     <link rel="icon" type="image/png" href="imagenes/imagen2.jpg">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-RXf+QSDCUQs6b4v5A9R2v6KUVKp1R9+XcMgy7pYzFSHLn3U4a8gE9F7R5C3XxR28Z59TLEEqzvvR1vpuYeIRsA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
     <!-- Header -->
@@ -94,7 +95,7 @@
                             <a href="https://www.linkedin.com/in/andr%C3%A9s-felipe-timote-daza-70052522b/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                                 <i class="fab fa-linkedin"></i> LinkedIn
                             </a>
-                            <a href="mailto:pipetimoty@gmail.com" class="btn btn-primary" data-i18n="intro.touch_btn">
+                            <a href="#" class="btn btn-primary email-link" data-i18n="intro.touch_btn">
                                 Get in Touch
                             </a>
                         </div>
@@ -220,11 +221,11 @@
                         </p>
                         <p>
                             <span data-i18n="contact.p2_start">Drop me a message at</span>
-                            <strong>pipetimoty@gmail.com</strong>
+                            <strong><span class="u-email"></span></strong>
                             <span data-i18n="contact.p2_end">and I'll get back to you as soon as possible.</span>
                         </p>
                         <div class="cta-section">
-                            <a href="mailto:pipetimoty@gmail.com" class="btn btn-primary" data-i18n="contact.email_btn">Send Email</a>
+                            <a href="#" class="btn btn-primary email-link" data-i18n="contact.email_btn">Send Email</a>
                             <a href="assets/cv/Andres-Timote-CV.pdf" 
                                class="btn btn-secondary download-cv" 
                                data-i18n="contact.download_cv"
@@ -242,7 +243,7 @@
                             <div class="spec-box-title" data-i18n="contact.info_title">Contact Information</div>
                             <div class="spec-item">
                                 <span class="spec-key" data-i18n="contact.email_label">EMAIL:</span>
-                                <span class="spec-value">pipetimoty@gmail.com</span>
+                                <span class="spec-value u-email"></span>
                             </div>
                             <div class="spec-item">
                                 <span class="spec-key" data-i18n="contact.github_label">GITHUB:</span>

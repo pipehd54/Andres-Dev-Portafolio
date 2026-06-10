@@ -131,10 +131,30 @@ const translations = {
 // Get saved language or default to 'en'
 let currentLang = localStorage.getItem('language') || 'en';
 
-// Initialize language on page load
+// ========================================
+// EMAIL OBFUSCATION
+// ========================================
+function setupEmail() {
+    const user = 'pipetimoty';
+    const domain = 'gmail.com';
+    const email = `${user}@${domain}`;
+    
+    // Update all text elements
+    document.querySelectorAll('.u-email').forEach(el => {
+        el.textContent = email;
+    });
+    
+    // Update all mailto links
+    document.querySelectorAll('.email-link').forEach(link => {
+        link.setAttribute('href', `mailto:${email}`);
+    });
+}
+
+// Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentLang);
     updateLanguageButtons();
+    setupEmail();
 });
 
 // Function to set language
