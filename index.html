@@ -2,272 +2,266 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Andrés Timote | Desarrollador Junior - Python, FastAPI, SQL</title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#f5f5f5">
-    <meta name="description" content="Portafolio de Andrés Timote, desarrollador junior especializado en Python, FastAPI y SQL. Busco oportunidades para crecer como Software Developer.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; frame-ancestors 'none';">
-    <meta property="og:title" content="Portafolio de Andrés Timote | Desarrollador Junior">
-    <meta property="og:image" content="imagenes/imagen2.jpg">
-    <meta property="og:image:alt" content="Foto de perfil de Andrés Timote, desarrollador junior">
-    <link rel="icon" type="image/png" href="imagenes/imagen2.jpg">
+    <title>Andrés Timote | Backend Developer</title>
+    <meta name="description" content="Backend developer specializing in FastAPI, Django, PostgreSQL, and cybersecurity. Building secure, scalable infrastructure.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-RXf+QSDCUQs6b4v5A9R2v6KUVKp1R9+XcMgy7pYzFSHLn3U4a8gE9F7R5C3XxR28Z59TLEEqzvvR1vpuYeIRsA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="header-content">
-            <h1 class="site-title">ANDRÉS | SOFTWARE DEVELOPER</h1>
-            <div class="header-right">
-                <nav class="header-nav">
-                    <a href="#introduction" data-i18n="nav.introduction">Introduction</a>
-                    <a href="#skills" data-i18n="nav.about">About</a>
-                    <a href="#projects" data-i18n="nav.projects">Projects</a>
-                    <a href="#contact" data-i18n="nav.contact">Contact</a>
-                </nav>
-                <div class="language-toggle">
-                    <button class="lang-btn" data-lang="en" title="English">EN</button>
-                    <span class="lang-separator">/</span>
-                    <button class="lang-btn" data-lang="es" title="Español">ES</button>
+
+    <!-- Ambient Background -->
+    <div class="bg-gradient"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Particles Canvas -->
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+    <!-- Navigation Dock -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">andrés.dev</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link active" data-i18n="nav.home">Inicio</a></li>
+                <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Proyectos</a></li>
+                <li><a href="#stack" class="nav-link" data-i18n="nav.stack">Stack</a></li>
+                <li><a href="#about" class="nav-link" data-i18n="nav.about">Sobre mí</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="lang-switcher">
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                </div>
+                <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 01: Hero -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge" data-reveal>
+                        <span class="hero-badge-dot"></span>
+                        <span data-i18n="hero.badge">Disponible para nuevos proyectos</span>
+                    </div>
+                    <h1 class="hero-title" data-reveal data-reveal-delay="1">Andrés<br>Timote<span class="accent">.</span></h1>
+                    <div class="hero-role" data-reveal data-reveal-delay="2">
+                        <span class="prompt">$</span><span id="typewriter"></span><span class="typed-cursor"></span>
+                    </div>
+                    <p class="hero-description" data-i18n="hero.tagline" data-reveal data-reveal-delay="3">Desarrollador enfocado en construir APIs rápidas, bases de datos eficientes y flujos automatizados. Apasionado por la ciberseguridad, el código asíncrono y las arquitecturas limpias.</p>
+                    <div class="hero-cta" data-reveal data-reveal-delay="3">
+                        <a href="#projects" class="btn btn-primary">
+                            <span data-i18n="hero.cta.projects">Ver proyectos</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost">
+                            <span data-i18n="hero.cta.contact">Contáctame</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats" data-reveal data-reveal-delay="4">
+                        <div class="stat">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label" data-i18n="stat.experience">Año de experiencia</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label" data-i18n="stat.projects">Proyectos completados</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">99.9%</div>
+                            <div class="stat-label" data-i18n="stat.uptime">Uptime del sistema</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-terminal" data-reveal data-reveal-delay="3">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                            <span class="terminal-header-title">andres@dev: ~/portfolio</span>
+                        </div>
+                        <div class="terminal-body" id="terminalBody"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <div class="layout-wrapper">
-        <!-- Sidebar de Navegación -->
-        <aside class="sidebar">
-            <div class="sidebar-content">
-                <div class="sidebar-section">
-                    <h3 data-i18n="sidebar.introduction">INTRODUCTION</h3>
-                    <ul>
-                        <li><a href="#introduction" data-i18n="sidebar.dev_intro">Developer Introduction</a></li>
-                    </ul>
+    <!-- 02: Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label" data-i18n="section.projects.label">02 / Proyectos</div>
+                <h2 class="section-title" data-i18n="section.projects.title">Cosas que he construido</h2>
+                <p class="section-subtitle" data-i18n="section.projects.subtitle">Una selección de proyectos donde diseñé arquitecturas y construí backends que escalan.</p>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card" data-reveal>
+                    <div class="project-card-header">
+                        <span class="project-number">PROY_001</span>
+                        <span class="project-year">2024</span>
+                    </div>
+                    <h3 class="project-card-title" data-i18n="project.garage.title">Garage API (Backend)</h3>
+                    <p class="project-card-desc" data-i18n="project.garage.desc">API RESTful asíncrona para el control de mantenimiento vehicular. Arquitecturada con FastAPI y PostgreSQL. Cuenta con un sistema de seguridad y autenticación mediante Tokens JWT y encriptación de contraseñas con Bcrypt. Incluye control de migraciones de base de datos con Alembic y validación estricta de datos con Pydantic.</p>
+                    <div class="project-tags">
+                        <span class="tag-mono">FastAPI</span>
+                        <span class="tag-mono">PostgreSQL</span>
+                        <span class="tag-mono">JWT</span>
+                        <span class="tag-mono">Alembic</span>
+                        <span class="tag-mono">Pydantic</span>
+                    </div>
+                    <a href="https://github.com/pipehd54/vehicle-management-backend.git" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i>
+                        <span data-i18n="project.view_code">Ver Código</span>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03: Stack -->
+    <section id="stack">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label" data-i18n="section.stack.label">03 / Stack</div>
+                <h2 class="section-title" data-i18n="section.stack.title">Herramientas que uso</h2>
+                <p class="section-subtitle" data-i18n="section.stack.subtitle">Tecnologías con las que trabajo a diario, organizadas por categoría.</p>
+            </div>
+            <div class="stack-grid" data-reveal>
+                <div class="stack-category">
+                    <div class="stack-category-header">
+                        <i class="fas fa-code stack-category-icon"></i>
+                        <span data-i18n="stack.languages">Lenguajes</span>
+                    </div>
+                    <div class="stack-items">
+                        <span class="stack-item">Python</span>
+                        <span class="stack-item">JavaScript (ES6+)</span>
+                    </div>
                 </div>
-                <div class="sidebar-section">
-                    <h3 data-i18n="sidebar.skills">TECHNICAL SKILLS</h3>
-                    <ul>
-                        <li><a href="#skills" data-i18n="sidebar.languages">Languages</a></li>
-                        <li><a href="#skills" data-i18n="sidebar.backend">Backend</a></li>
-                        <li><a href="#skills" data-i18n="sidebar.frontend">Frontend</a></li>
-                        <li><a href="#skills" data-i18n="sidebar.tools">Tools</a></li>
-                    </ul>
+                <div class="stack-category">
+                    <div class="stack-category-header">
+                        <i class="fas fa-server stack-category-icon"></i>
+                        <span>Backend</span>
+                    </div>
+                    <div class="stack-items">
+                        <span class="stack-item">FastAPI</span>
+                        <span class="stack-item">Django</span>
+                        <span class="stack-item">SQL</span>
+                    </div>
                 </div>
-                <div class="sidebar-section">
-                    <h3 data-i18n="sidebar.projects">PROJECTS</h3>
-                    <ul>
-                        <li><a href="#projects" data-i18n="sidebar.portfolio">Portafolio Personal</a></li>
-                    </ul>
-                </div>
-                <div class="sidebar-section">
-                    <h3 data-i18n="sidebar.touch">GET IN TOUCH</h3>
-                    <ul>
-                        <li><a href="#contact" data-i18n="sidebar.contact_link">Contact</a></li>
-                    </ul>
+                <div class="stack-category">
+                    <div class="stack-category-header">
+                        <i class="fas fa-shield-alt stack-category-icon"></i>
+                        <span data-i18n="stack.focus">Enfoque</span>
+                    </div>
+                    <div class="stack-items">
+                        <span class="stack-item">Cybersecurity</span>
+                        <span class="stack-item">Automation</span>
+                    </div>
                 </div>
             </div>
-        </aside>
+        </div>
+    </section>
 
-        <!-- Contenido Principal -->
-        <main class="main-content">
-            <!-- INTRODUCTION Section -->
-            <section id="introduction" class="content-section">
-                <div class="section-header">
-                    <h2 data-i18n="intro.title">Developer Introduction</h2>
-                </div>
-                <div class="two-column">
-                    <div class="left-column">
-                        <p data-i18n="intro.p1">
-                            Andrés, Software Developer based in Cali, Colombia.
-                        </p>
-                        <p data-i18n="intro.p2">
-                            Focused on designing efficient, secure, and scalable system architectures.
-                        </p>
-                        <p data-i18n="intro.p3">
-                            Currently specializing in building robust APIs with FastAPI & Python, managing persistent data with SQL, and enhancing interfaces via JavaScript. Passionate about logic, security, and optimizing administrative workflows.
-                        </p>
-                        <div class="cta-section">
-                            <a href="https://github.com/pipehd54" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://www.linkedin.com/in/andr%C3%A9s-felipe-timote-daza-70052522b/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                                <i class="fab fa-linkedin"></i> LinkedIn
-                            </a>
-                            <a href="#" class="btn btn-primary email-link" data-i18n="intro.touch_btn">
-                                Get in Touch
-                            </a>
+    <!-- 04: About -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label" data-i18n="section.about.label">04 / Sobre mí</div>
+                <h2 class="section-title" data-i18n="section.about.title">Perfil profesional</h2>
+            </div>
+            <div class="about-grid" data-reveal>
+                <div class="about-content">
+                    <p class="about-text" data-i18n="status.desc">Estudiante de 6to semestre de Desarrollo de Software. Buscando mi primera oportunidad como Desarrollador Backend Junior, respaldado por casi un año de experiencia corporativa previa.</p>
+                    <div class="about-details">
+                        <div class="about-detail">
+                            <span class="about-detail-label" data-i18n="about.experience">Experiencia</span>
+                            <span class="about-detail-value" data-i18n="about.experience.value">Desarrollador Backend Freelance</span>
                         </div>
-                    </div>
-                    <div class="right-column">
-                        <div class="spec-box">
-                            <div class="spec-box-title" data-i18n="intro.resource_title">Resource: Developer Profile</div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="intro.name_label">NAME:</span>
-                                <span class="spec-value">Andrés Felipe Timote Daza</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="intro.location_label">LOCATION:</span>
-                                <span class="spec-value">Cali, Colombia</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="intro.status_label">STATUS:</span>
-                                <span class="spec-value" data-i18n="intro.status_value">Junior Developer</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="intro.focus_label">FOCUS:</span>
-                                <span class="spec-value" data-i18n="intro.focus_value">Backend & System Design</span>
-                            </div>
+                        <div class="about-detail">
+                            <span class="about-detail-label" data-i18n="about.security">Enfoque de Seguridad</span>
+                            <span class="about-detail-value" data-i18n="about.security.value">Gestión de Datos Encriptados</span>
                         </div>
                     </div>
                 </div>
-            </section>
+                <div class="about-status">
+                    <div class="status-card">
+                        <div class="status-indicator">
+                            <span class="pulse-dot"></span>
+                            <span class="status-value" data-i18n="status.active">ACTIVO</span>
+                        </div>
+                        <div class="uptime-bar">
+                            <div class="uptime-fill"></div>
+                        </div>
+                        <div class="uptime-counter">
+                            <span class="uptime-label">UPTIME</span>
+                            <span class="uptime-value" id="uptime-counter">calculating...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- TECHNICAL SKILLS Section -->
-            <section id="skills" class="content-section">
-                <div class="section-header">
-                    <h2 data-i18n="skills.title">Technical Skills</h2>
-                </div>
-                <div class="two-column">
-                    <div class="left-column">
-                        <h4 data-i18n="skills.frameworks_title">Languages & Frameworks</h4>
-                        <p data-i18n="skills.frameworks_desc">
-                            I work with Python as my primary language, complemented by JavaScript for frontend development. I use FastAPI for building robust backend APIs and SQL for database management.
-                        </p>
+    <!-- 05: Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label" data-i18n="section.contact.label">05 / Contacto</div>
+                <h2 class="section-title" data-i18n="section.contact.title">Hablemos</h2>
+                <p class="section-subtitle" data-i18n="section.contact.subtitle">¿Tienes un proyecto en mente o una oportunidad interesante? Envíame un mensaje.</p>
+            </div>
+            <div class="contact-grid" data-reveal>
+                <a href="https://github.com/pipehd54" target="_blank" class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-github"></i></div>
+                    <div class="contact-card-info">
+                        <div class="contact-card-label">GitHub</div>
+                        <div class="contact-card-value">@pipehd54</div>
                     </div>
-                    <div class="right-column">
-                        <div class="spec-box">
-                            <div class="spec-box-title" data-i18n="skills.stack_title">Tech Stack</div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="skills.languages_label">LANGUAGES:</span>
-                                <span class="spec-value">Python, JavaScript (ES6+)</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="skills.backend_label">BACKEND:</span>
-                                <span class="spec-value">FastAPI, SQL</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="skills.frontend_label">FRONTEND:</span>
-                                <span class="spec-value">HTML, CSS, JavaScript</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="skills.tools_label">TOOLS:</span>
-                                <span class="spec-value">Git & GitHub</span>
-                            </div>
-                        </div>
+                </a>
+                <a href="https://www.linkedin.com/in/andr%C3%A9s-felipe-timote-daza-70052522b/" target="_blank" class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                    <div class="contact-card-info">
+                        <div class="contact-card-label">LinkedIn</div>
+                        <div class="contact-card-value">/in/andrés-timote</div>
                     </div>
-                </div>
-            </section>
+                </a>
+                <a href="#" class="contact-card email-link">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-card-info">
+                        <div class="contact-card-label">Email</div>
+                        <div class="contact-card-value" data-i18n="contact.email_btn">Enviar Email</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-            <!-- PROJECTS Section -->
-            <section id="projects" class="content-section">
-                <div class="section-header">
-                    <h2 data-i18n="projects.title">Featured Projects</h2>
-                </div>
-                <div class="two-column">
-                    <div class="left-column">
-                        <h4 data-i18n="projects.portfolio_title">Portafolio Personal</h4>
-                        <p data-i18n="projects.portfolio_p1">
-                            A clean and modern portfolio website built with pure HTML and CSS. Features a responsive design and intuitive user experience to showcase projects and skills as a developer.
-                        </p>
-                        <p data-i18n="projects.portfolio_p2">
-                            This project demonstrates my attention to detail, understanding of responsive design, and ability to create professional web experiences from scratch.
-                        </p>
-                        <div class="tech-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/pipehd54/Andres-Dev-Portafolio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" data-i18n="projects.view_code">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                    <div class="right-column">
-                        <div class="spec-box">
-                            <div class="spec-box-title" data-i18n="projects.details_title">Project Details</div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="projects.type_label">TYPE:</span>
-                                <span class="spec-value" data-i18n="projects.type_value">Frontend Portfolio</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="projects.stack_label">STACK:</span>
-                                <span class="spec-value">HTML, CSS, JS</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="projects.features_label">FEATURES:</span>
-                                <span class="spec-value" data-i18n="projects.features_value">Responsive, Smooth Scroll</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="projects.status_label">STATUS:</span>
-                                <span class="spec-value" data-i18n="projects.status_value">Completed</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CONTACT Section -->
-            <section id="contact" class="content-section">
-                <div class="section-header">
-                    <h2 data-i18n="contact.title">Get in Touch</h2>
-                </div>
-                <div class="two-column">
-                    <div class="left-column">
-                        <p data-i18n="contact.p1">
-                            Currently open to Junior Developer opportunities. If you want to discuss a job opening, project, or collaboration, I'd be happy to chat with you.
-                        </p>
-                        <p>
-                            <span data-i18n="contact.p2_start">Drop me a message at</span>
-                            <strong><span class="u-email"></span></strong>
-                            <span data-i18n="contact.p2_end">and I'll get back to you as soon as possible.</span>
-                        </p>
-                        <div class="cta-section">
-                            <a href="#" class="btn btn-primary email-link" data-i18n="contact.email_btn">Send Email</a>
-                            <a href="assets/cv/Andres-Timote-CV.pdf" 
-                               class="btn btn-secondary download-cv" 
-                               data-i18n="contact.download_cv"
-                               data-cv-en="assets/cv/Andres-Timote-CV.pdf"
-                               data-cv-es="assets/cv/Andres-Timote-CV.pdf"
-                               download
-                               target="_blank"
-                               aria-label="Download CV">
-                                Download CV
-                            </a>
-                        </div>
-                    </div>
-                    <div class="right-column">
-                        <div class="spec-box">
-                            <div class="spec-box-title" data-i18n="contact.info_title">Contact Information</div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="contact.email_label">EMAIL:</span>
-                                <span class="spec-value u-email"></span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="contact.github_label">GITHUB:</span>
-                                <span class="spec-value">github.com/pipehd54</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="contact.linkedin_label">LINKEDIN:</span>
-                                <span class="spec-value">linkedin.com/in/andrés...</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-key" data-i18n="contact.location_label">LOCATION:</span>
-                                <span class="spec-value">Cali, Colombia</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Footer -->
-            <footer class="main-footer">
-                <p data-i18n="footer">Designed and built by Andrés Timote © 2024</p>
-            </footer>
-        </main>
-    </div>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p class="footer-content">
+                <span>© 2024 Andrés Timote</span>
+                <span class="footer-heartbeat"><i class="fas fa-heart"></i></span>
+                <span>Backend Developer</span>
+            </p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
