@@ -43,6 +43,8 @@ const translations = {
         // Project
         'project.garage.title': 'Garage API (Backend)',
         'project.garage.desc': 'Asynchronous RESTful API for vehicle maintenance management. Architected with FastAPI and PostgreSQL. Features a security and authentication system using JWT tokens and password hashing with Bcrypt. Includes database migration control with Alembic and strict data validation with Pydantic.',
+        'project.respira-cali.title': 'Respira Cali (Backend/Frontend)',
+        'project.respira-cali.desc': 'Web application developed with HTML, CSS and JavaScript to query and visualize information about air quality in Cali. The project was built with the support of AI tools, but with complete understanding of the implemented logic, data consumption, and frontend structure.',
         'project.view_code': 'View Source',
         // Contact
         'contact.email_btn': 'Send Email'
@@ -88,6 +90,8 @@ const translations = {
         // Project
         'project.garage.title': 'Garage API (Backend)',
         'project.garage.desc': 'API RESTful asíncrona para el control de mantenimiento vehicular. Arquitecturada con FastAPI y PostgreSQL. Cuenta con un sistema de seguridad y autenticación mediante Tokens JWT y encriptación de contraseñas con Bcrypt. Incluye control de migraciones de base de datos con Alembic y validación estricta de datos con Pydantic.',
+        'project.respira-cali.title': 'Respira Cali (Backend/Frontend)',
+        'project.respira-cali.desc': 'Aplicación web desarrollada con HTML, CSS y Javascript para consultar y visualizar información sobre la calidad del aire en Cali. El proyecto fue construido con apoyo de herramientas de IA, pero con comprensión completa de la lógica implementada, el consumo de datos y la estructura del frontend.',
         'project.view_code': 'Ver Código',
         // Contact
         'contact.email_btn': 'Enviar Email'
