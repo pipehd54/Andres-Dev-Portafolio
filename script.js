@@ -75,7 +75,7 @@ const translations = {
 
         // Hero
         'hero.badge': 'Disponible para nuevos proyectos',
-        'hero.tagline': 'Desarrollador enfocado en construir APIs rápidas, bases de datos eficientes y flujos automatizados. Apasionado por la ciberseguridad, el código asíncrono y las arquitecturas limpias.',
+        'hero.tagline': 'Desarrollador de software enfocado en la construcción de APIs rápidas y flujos de trabajo automatizados. Apasionado por la ciberseguridad, las redes y las arquitecturas limpias y seguras.',
         'hero.cta.projects': 'Ver proyectos',
         'hero.cta.contact': 'Contáctame',
         'hero.cta.cv': 'Descargar CV',
@@ -86,7 +86,7 @@ const translations = {
         // Projects Section
         'section.projects.label': '02 / Proyectos',
         'section.projects.title': 'Cosas que he construido',
-        'section.projects.subtitle': 'Una selección de proyectos donde diseñé arquitecturas y construí backends que escalan.',
+        'section.projects.subtitle': 'Mi selección de proyectos personales donde diseñé las arquitecturas desde cero y construí backends optimizados y limpios, siempre siguiendo buenas prácticas.',
         'project.garage.title': 'Garage API (Backend)',
         'project.garage.desc': 'API RESTful asíncrona para el control de mantenimiento vehicular. Arquitecturada con FastAPI y PostgreSQL. Cuenta con un sistema de seguridad y autenticación mediante Tokens JWT y encriptación de contraseñas con Bcrypt. Incluye control de migraciones de base de datos con Alembic y validación estricta de datos con Pydantic.',
         'project.respira-cali.title': 'Respira Cali (Backend/Frontend)',
@@ -111,7 +111,7 @@ const translations = {
         'about.security': 'Enfoque de Seguridad',
         'about.security.value': 'Gestión de Datos Encriptados & Autenticación Segura',
         'status.active': 'BUSCANDO OPORTUNIDADES',
-        'status.desc': 'Estudiante de 6to semestre de Desarrollo de Software. Buscando mi primera oportunidad como Desarrollador Backend Junior, respaldado por casi un año de experiencia corporativa previa.',
+        'status.desc': 'Soy estudiante de Tecnología en Desarrollo de Software (sexto semestre) y estoy pasando a Ingeniería de Sistemas. Actualmente busco mi primera oportunidad laboral en el sector como Desarrollador de Software o Soporte Técnico. Tengo seis meses de experiencia en el área administrativa, donde además apoyé en un proyecto de automatización de flujos de tareas repetitivas.',
         'status.role': 'Rol deseado:',
         'status.modality': 'Modalidad:',
         'status.modality_val': 'Remoto / Híbrido',
