@@ -1,5 +1,5 @@
 // ========================================
-// TRANSLATION SYSTEM
+// TRANSLATION SYSTEM (OPTIMIZED)
 // ========================================
 const translations = {
     en: {
@@ -63,7 +63,14 @@ const translations = {
         'contact.copied': 'Copied!',
 
         // Footer
-        'footer.built': 'Built with Clean & Responsive design'
+        'footer.built': 'Built with Clean & Responsive design',
+
+        // Typewriter
+        'typewriter.0': 'Building secure backend architectures',
+        'typewriter.1': 'Designing scalable APIs with FastAPI',
+        'typewriter.2': 'Automating workflows with Python',
+        'typewriter.3': 'Hardening systems with cybersecurity',
+        'typewriter.4': 'Python · FastAPI · Django · PostgreSQL'
     },
     es: {
         // Navigation
@@ -126,27 +133,25 @@ const translations = {
         'contact.copied': '¡Copiado!',
 
         // Footer
-        'footer.built': 'Diseñado con enfoque Clean & Responsive'
+        'footer.built': 'Diseñado con enfoque Clean & Responsive',
+
+        // Typewriter
+        'typewriter.0': 'Construyendo arquitecturas backend seguras',
+        'typewriter.1': 'Diseñando APIs escalables con FastAPI',
+        'typewriter.2': 'Automatizando flujos complejos con Python',
+        'typewriter.3': 'Fortaleciendo sistemas con ciberseguridad',
+        'typewriter.4': 'Python · FastAPI · Django · PostgreSQL'
     }
 };
 
-// Typewriter phrases per language
-const typewriterPhrases = {
-    en: [
-        'Building secure backend architectures',
-        'Designing scalable APIs with FastAPI',
-        'Automating workflows with Python',
-        'Hardening systems with cybersecurity',
-        'Python · FastAPI · Django · PostgreSQL'
-    ],
-    es: [
-        'Construyendo arquitecturas backend seguras',
-        'Diseñando APIs escalables con FastAPI',
-        'Automatizando flujos complejos con Python',
-        'Fortaleciendo sistemas con ciberseguridad',
-        'Python · FastAPI · Django · PostgreSQL'
-    ]
-};
+// Typewriter phrases (now in translations for consistency)
+const typewriterKeys = [
+    'typewriter.0',
+    'typewriter.1',
+    'typewriter.2',
+    'typewriter.3',
+    'typewriter.4'
+];
 
 // Terminal lines
 const terminalLines = [
@@ -181,10 +186,10 @@ function setupEmail() {
         copyBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(email).then(() => {
                 copyBtn.classList.add('copied');
-                copyTooltip.textContent = translations[currentLang]['contact.copied'] || '¡Copiado!';
+                copyTooltip.textContent = t('contact.copied', '¡Copiado!');
                 setTimeout(() => {
                     copyBtn.classList.remove('copied');
-                    copyTooltip.textContent = translations[currentLang]['contact.copy'] || 'Copiar';
+                    copyTooltip.textContent = t('contact.copy', 'Copiar');
                 }, 2000);
             }).catch(err => {
                 console.error('Copy failed', err);
@@ -194,22 +199,52 @@ function setupEmail() {
 }
 
 // ========================================
-// LANGUAGE SYSTEM
+// LANGUAGE SYSTEM (OPTIMIZED)
 // ========================================
+let i18nElements = null;
+let i18nCache = new Map();
+
+function collectI18nElements() {
+    if (i18nElements) return i18nElements;
+    
+    i18nElements = Array.from(document.querySelectorAll('[data-i18n]')).map(el => {
+        const key = el.getAttribute('data-i18n');
+        const attr = el.getAttribute('data-i18n-attr');
+        return { el, key, attr: attr || 'textContent' };
+    });
+    return i18nElements;
+}
+
 function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('language', lang);
 
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            element.textContent = translations[lang][key];
-        }
-    });
+    const dict = translations[lang] || translations.es;
+    const elements = collectI18nElements();
 
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    requestAnimationFrame(() => {
+        elements.forEach(({ el, key, attr }) => {
+            const translation = dict[key];
+            if (translation !== undefined) {
+                if (attr === 'textContent') {
+                    el.textContent = translation;
+                } else {
+                    el.setAttribute(attr, translation);
+                }
+            }
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+
+        document.documentElement.lang = lang;
     });
+}
+
+function t(key, fallback = '') {
+    const dict = translations[currentLang] || translations.es;
+    return dict[key] ?? fallback;
 }
 
 // ========================================
@@ -329,8 +364,8 @@ function initTypewriter() {
     let phraseIdx = 0, charIdx = 0, isDeleting = false;
 
     function tick() {
-        const phrases = typewriterPhrases[currentLang] || typewriterPhrases.es;
-        const current = phrases[phraseIdx];
+        const key = typewriterKeys[phraseIdx];
+        const current = t(key);
 
         if (isDeleting) {
             charIdx--;
@@ -347,7 +382,7 @@ function initTypewriter() {
             isDeleting = true;
         } else if (isDeleting && charIdx === 0) {
             isDeleting = false;
-            phraseIdx = (phraseIdx + 1) % phrases.length;
+            phraseIdx = (phraseIdx + 1) % typewriterKeys.length;
             delay = 400;
         }
 
