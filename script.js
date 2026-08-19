@@ -12,7 +12,7 @@ const translations = {
 
         // Hero
         'hero.badge': 'Available for new projects',
-        'hero.tagline': 'Developer focused on building fast APIs, efficient databases, and automated workflows. Passionate about cybersecurity, asynchronous code, and clean architectures.',
+        'hero.tagline': 'Software developer focused on the construction of fast APIs and automated workflows. Passionate about cybersecurity, networks, and clean and secure architectures.',
         'hero.cta.projects': 'View projects',
         'hero.cta.contact': 'Contact me',
         'hero.cta.cv': 'Download CV',
@@ -23,11 +23,13 @@ const translations = {
         // Projects Section
         'section.projects.label': '02 / Projects',
         'section.projects.title': 'Things I\'ve built',
-        'section.projects.subtitle': 'A selection of projects where I designed architectures and built scalable backends.',
+        'section.projects.subtitle': 'My selection of personal projects where I designed architectures from scratch and built optimized, clean backends, always following best practices.',
         'project.garage.title': 'Garage API (Backend)',
         'project.garage.desc': 'Asynchronous RESTful API for vehicle maintenance management. Architected with FastAPI and PostgreSQL. Features a security and authentication system using JWT tokens and password hashing with Bcrypt. Includes database migration control with Alembic and strict data validation with Pydantic.',
         'project.respira-cali.title': 'Respira Cali (Backend/Frontend)',
         'project.respira-cali.desc': 'Web application developed with HTML, CSS and JavaScript to query and visualize air quality information in Cali. Built with complete understanding of the implemented logic, data consumption, and frontend structure.',
+        'project.vehicle-management-frontend.title': 'Vehicle Management Frontend',
+        'project.vehicle-management-frontend.desc': 'Interactive web interface (SPA) in Vanilla JS, HTML5, and CSS3 for vehicle management, preventive maintenance, and intelligent service calculation based on the owner\'s manual.',
         'project.view_code': 'View Code on GitHub',
 
         // Stack Section
@@ -46,7 +48,7 @@ const translations = {
         'about.security': 'Security Focus',
         'about.security.value': 'Encrypted Data Management & Secure Auth',
         'status.active': 'SEEKING OPPORTUNITIES',
-        'status.desc': '6th-semester Software Development student. Seeking my first opportunity as a Junior Backend Developer, backed by nearly a year of prior corporate/freelance experience.',
+        'status.desc': 'I am a student of Technology in Software Development (sixth semester) and I am transitioning to Systems Engineering. Currently seeking my first job opportunity in the sector as a Software Developer or Technical Support. I have six months of experience in the administrative area, where I also supported a project on the automation of repetitive task workflows.',
         'status.role': 'Desired role:',
         'status.modality': 'Modality:',
         'status.modality_val': 'Remote / Hybrid',
@@ -89,6 +91,8 @@ const translations = {
         'project.garage.desc': 'API RESTful asíncrona para el control de mantenimiento vehicular. Arquitecturada con FastAPI y PostgreSQL. Cuenta con un sistema de seguridad y autenticación mediante Tokens JWT y encriptación de contraseñas con Bcrypt. Incluye control de migraciones de base de datos con Alembic y validación estricta de datos con Pydantic.',
         'project.respira-cali.title': 'Respira Cali (Backend/Frontend)',
         'project.respira-cali.desc': 'Aplicación web desarrollada con HTML, CSS y Javascript para consultar y visualizar información sobre la calidad del aire en Cali. El proyecto fue construido con comprensión completa de la lógica implementada, el consumo de datos y la estructura del frontend.',
+        'project.vehicle-management-frontend.title': 'vehicle-management-frontend',
+        'project.vehicle-management-frontend.desc': 'Interfaz web interactiva (SPA) en Vanilla JS, HTML5 y CSS3 para la gestión de vehículos, mantenimientos preventivos y cálculo inteligente de servicios según el manual del propietario.',
         'project.view_code': 'Ver Código en GitHub',
 
         // Stack Section
@@ -151,7 +155,7 @@ const terminalLines = [
     { type: 'cmd', text: 'cat stack.txt' },
     { type: 'out', text: 'Python · FastAPI · Django · PostgreSQL · Alembic' },
     { type: 'cmd', text: 'ls projects/' },
-    { type: 'out', text: 'garage_api/  respira_cali/  security_tools/' },
+    { type: 'out', text: 'garage_api/  respira_cali/  vehicle_management_frontend/' },
     { type: 'cmd', text: './deploy --status' },
     { type: 'out-ok', text: '● Systems operational · Ready for hiring' }
 ];
