@@ -46,6 +46,33 @@
   --radius-sm: 8px;
 }
 
+/* Light Theme Variables */
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg-subtle: #f1f5f9;
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-hover: rgba(241, 245, 249, 0.95);
+  --surface-card: #ffffff;
+
+  --border: rgba(2, 132, 199, 0.15);
+  --border-hover: rgba(2, 132, 199, 0.4);
+  --border-solid: #e2e8f0;
+
+  --accent: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-glow: rgba(2, 132, 199, 0.25);
+  --accent-emerald: #059669;
+  --secondary: #6366f1;
+
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
 @media (min-width: 768px) {
   :root {
     --section-padding: 6.5rem 2rem;
@@ -1259,4 +1286,141 @@ section {
 @media (max-width: 768px) {
   .nav-links { background: rgba(7, 9, 24, 0.96); }
   .bg-gradient::after { width: 260px; height: 260px; right: -130px; top: 95px; opacity: 0.12; }
+}
+
+/* ============ THEME TOGGLE BUTTON ============ */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: all var(--transition);
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.theme-toggle i {
+  font-size: 1rem;
+}
+
+/* ============ CONTACT FORM ============ */
+.contact-form {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: all var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form .btn-primary {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.form-status {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.form-status.success {
+  color: var(--accent-emerald);
+}
+
+.form-status.error {
+  color: #ef4444;
+}
+
+/* ============ ACCESSIBILITY - SKIP LINK ============ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 20px;
+}
+
+/* Keyboard navigation focus styles */
+.keyboard-nav :focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ============ PERFORMANCE - CONTAIN ============ */
+.project-card,
+.stack-category,
+.contact-card,
+.terminal {
+  contain: layout style paint;
+}
+
+/* ============ LAZY LOADING PLACEHOLDER ============ */
+img[loading="lazy"] {
+  background: linear-gradient(90deg, var(--bg-subtle) 25%, var(--surface) 50%, var(--bg-subtle) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
