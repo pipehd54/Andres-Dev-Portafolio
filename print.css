@@ -1,0 +1,275 @@
+/* ============================================================
+   PRINT STYLESHEET - CV FÍSICO
+   Optimizado para impresión en papel
+   ============================================================ */
+
+@media print {
+    /* Reset general para impresión */
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-size: 11pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Ocultar elementos no esenciales */
+    .bg-gradient,
+    .scroll-progress,
+    .nav,
+    .hero-terminal,
+    .hero-badge,
+    .hero-cta a:not([download]),
+    .project-actions,
+    .contact-form,
+    .theme-toggle,
+    .lang-switcher,
+    .nav-mobile-toggle,
+    footer {
+        display: none !important;
+    }
+
+    /* Ajustar contenedores */
+    .container {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    section {
+        padding: 1.5rem 0;
+        page-break-inside: avoid;
+    }
+
+    /* Hero Section - Encabezado del CV */
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+        border-bottom: 2px solid #000;
+    }
+
+    .hero-title {
+        font-size: 28pt;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-role {
+        font-size: 12pt;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .hero-description {
+        font-size: 11pt;
+        color: #444;
+        max-width: 100%;
+    }
+
+    .hero-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #ccc;
+    }
+
+    .stat-value {
+        font-size: 14pt;
+        font-weight: 700;
+    }
+
+    .stat-label {
+        font-size: 9pt;
+        color: #666;
+    }
+
+    /* Projects Section */
+    #projects {
+        page-break-inside: avoid;
+    }
+
+    .section-title {
+        font-size: 18pt;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+        font-size: 10pt;
+        color: #444;
+    }
+
+    .project-card {
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        page-break-inside: avoid;
+    }
+
+    .project-card-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-number {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9pt;
+        font-weight: 600;
+    }
+
+    .project-year {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9pt;
+        color: #666;
+    }
+
+    .project-card-title {
+        font-size: 13pt;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-card-desc {
+        font-size: 10pt;
+        color: #333;
+        margin-bottom: 0.75rem;
+    }
+
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+
+    .tag-mono {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8pt;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid #999;
+        border-radius: 3px;
+        color: #333;
+    }
+
+    /* Stack Section */
+    .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .stack-category {
+        border: 1px solid #ccc;
+        padding: 0.75rem;
+    }
+
+    .stack-category-header {
+        font-weight: 600;
+        font-size: 10pt;
+        margin-bottom: 0.5rem;
+    }
+
+    .stack-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+
+    .stack-item {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8pt;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid #999;
+        border-radius: 3px;
+    }
+
+    /* About Section */
+    .about-text {
+        font-size: 10pt;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .status-card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .status-value {
+        font-weight: 700;
+        color: #000;
+    }
+
+    .status-info-list {
+        margin-top: 0.75rem;
+    }
+
+    .status-info-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9pt;
+        margin-bottom: 0.3rem;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .contact-card {
+        border: 1px solid #ccc;
+        padding: 0.75rem;
+        font-size: 9pt;
+    }
+
+    .contact-card-value {
+        font-weight: 600;
+    }
+
+    /* Footer */
+    .main-footer {
+        border-top: 1px solid #ccc;
+        padding: 1rem 0;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .footer-content {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8pt;
+        color: #666;
+    }
+
+    /* Enlaces visibles en impresión */
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        color: #666;
+    }
+
+    /* Evitar saltos de página incómodos */
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+
+    /* Márgenes de página */
+    @page {
+        margin: 2cm;
+        size: A4;
+    }
+}

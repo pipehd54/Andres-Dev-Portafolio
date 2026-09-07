@@ -1,0 +1,26 @@
+{
+    "name": "Andrés Timote - Backend Developer",
+    "short_name": "Andrés.dev",
+    "description": "Backend developer especializado en FastAPI, Django, PostgreSQL y ciberseguridad.",
+    "start_url": "/portfolio/",
+    "display": "standalone",
+    "background_color": "#070c18",
+    "theme_color": "#070c18",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "imagenes/imagen3.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "imagenes/imagen3.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["business", "productivity"],
+    "lang": "es"
+}

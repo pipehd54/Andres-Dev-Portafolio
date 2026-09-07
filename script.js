@@ -429,3 +429,161 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypewriter();
     initReveal();
 });
+
+// ========================================
+// THEME TOGGLE (DARK/LIGHT MODE)
+// ========================================
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const icon = themeToggle ? themeToggle.querySelector('i') : null;
+    
+    // Load saved theme or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme, icon);
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme, icon);
+        });
+    }
+}
+
+function updateThemeIcon(theme, icon) {
+    if (!icon) return;
+    
+    if (theme === 'light') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+}
+
+// ========================================
+// CONTACT FORM HANDLING
+// ========================================
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+    
+    if (!form || !statusEl) return;
+    
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        // Disable button during submission
+        submitBtn.disabled = true;
+        submitBtn.textContent = t('form.sending', 'Enviando...');
+        statusEl.textContent = '';
+        statusEl.className = 'form-status';
+        
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+            
+            if (response.ok) {
+                statusEl.textContent = t('form.success', '¡Mensaje enviado con éxito!');
+                statusEl.classList.add('success');
+                form.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            console.error('Form error:', error);
+            statusEl.textContent = t('form.error', 'Error al enviar. Intenta de nuevo.');
+            statusEl.classList.add('error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            
+            setTimeout(() => {
+                statusEl.textContent = '';
+                statusEl.className = 'form-status';
+            }, 5000);
+        }
+    });
+}
+
+// ========================================
+// ACCESSIBILITY ENHANCEMENTS
+// ========================================
+function initAccessibility() {
+    // Focus visible for keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-nav');
+        }
+    });
+    
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-nav');
+    });
+    
+    // Skip to main content link (add dynamically if not present)
+    if (!document.querySelector('.skip-link')) {
+        const skipLink = document.createElement('a');
+        skipLink.href = '#hero';
+        skipLink.className = 'skip-link';
+        skipLink.textContent = 'Saltar al contenido principal';
+        document.body.insertBefore(skipLink, document.body.firstChild);
+    }
+}
+
+// ========================================
+// UPDATED INITIALIZATION
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Language & Email Setup
+    setLanguage(currentLang);
+    setupEmail();
+
+    // Language buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+    });
+
+    // Core functionality
+    initNavbar();
+    initScrollProgress();
+    initTerminal();
+    initTypewriter();
+    initReveal();
+    
+    // New features
+    initThemeToggle();
+    initContactForm();
+    initAccessibility();
+});
+
+// ========================================
+// FORM TRANSLATIONS (added to translations object)
+// ========================================
+translations.en['form.name'] = 'Name';
+translations.en['form.email'] = 'Email';
+translations.en['form.message'] = 'Message';
+translations.en['form.submit'] = 'Send Message';
+translations.en['form.sending'] = 'Sending...';
+translations.en['form.success'] = 'Message sent successfully!';
+translations.en['form.error'] = 'Error sending. Please try again.';
+
+translations.es['form.name'] = 'Nombre';
+translations.es['form.email'] = 'Email';
+translations.es['form.message'] = 'Mensaje';
+translations.es['form.submit'] = 'Enviar Mensaje';
+translations.es['form.sending'] = 'Enviando...';
+translations.es['form.success'] = '¡Mensaje enviado con éxito!';
+translations.es['form.error'] = 'Error al enviar. Intenta de nuevo.';
