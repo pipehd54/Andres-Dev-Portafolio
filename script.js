@@ -23,13 +23,25 @@ const translations = {
         // Projects Section
         'section.projects.label': '02 / Projects',
         'section.projects.title': 'Things I\'ve built',
-        'section.projects.subtitle': 'My selection of personal projects where I designed architectures from scratch and built optimized, clean backends, always following best practices.',
+        'section.projects.subtitle': 'One case in depth plus two supporting pieces. Each one: my role, the technical decisions, and the outcome.',
+        'project.featured': 'Featured case · Backend',
         'project.garage.title': 'Garage API (Backend)',
-        'project.garage.desc': 'Asynchronous RESTful API for vehicle maintenance management. Architected with FastAPI and PostgreSQL. Features a security and authentication system using JWT tokens and password hashing with Bcrypt. Includes database migration control with Alembic and strict data validation with Pydantic.',
-        'project.respira-cali.title': 'Respira Cali (Backend/Frontend)',
-        'project.respira-cali.desc': 'Web application developed with HTML, CSS and JavaScript to query and visualize air quality information in Cali. Built with complete understanding of the implemented logic, data consumption, and frontend structure.',
-        'project.vehicle-management-frontend.title': 'Vehicle Management Frontend',
-        'project.vehicle-management-frontend.desc': 'Interactive web interface (SPA) in Vanilla JS, HTML5, and CSS3 for vehicle management, preventive maintenance, and intelligent service calculation based on the owner\'s manual.',
+        'project.garage.role': 'Role: end-to-end design & build — FastAPI + PostgreSQL',
+        'project.garage.desc': 'Problem: tracking vehicle maintenance (vehicles, services, history) in a clean, secure API instead of scattered records. Decision: async FastAPI, JWT auth with Bcrypt, strict Pydantic validation, and versioned Alembic migrations.',
+        'project.garage.o1': 'JWT auth + Bcrypt hashing: protected routes, credentials never in plain text',
+        'project.garage.o2': 'Pydantic contracts: bad data caught before touching the DB',
+        'project.garage.o3': 'Alembic: schema evolves with reversible migrations',
+        'project.garage.note': 'Documented with FastAPI auto-generated OpenAPI/Swagger.',
+        'project.respira-cali.title': 'Respira Cali',
+        'project.respira-cali.role': 'Role: frontend + public API consumption',
+        'project.respira-cali.desc': 'Queries and visualizes Cali air quality from a public REST API. My contribution: frontend architecture, loading/error states, and clear data presentation.',
+        'project.respira-cali.o1': 'REST consumption with error handling and retries',
+        'project.respira-cali.o2': 'UI that explains the data, not just displays it',
+        'project.vehicle-management-frontend.title': 'Garage Frontend (SPA)',
+        'project.vehicle-management-frontend.role': 'Role: Vanilla JS SPA wired to Garage API',
+        'project.vehicle-management-frontend.desc': 'Garage API client: vehicle and preventive-maintenance management with next-service calculation per owner manual.',
+        'project.vehicle-management-frontend.o1': 'Framework-free SPA: own routing and state',
+        'project.vehicle-management-frontend.o2': 'Consumes the API JWT and mirrors its rules',
         'project.view_code': 'View Code on GitHub',
 
         // Stack Section
@@ -93,13 +105,25 @@ const translations = {
         // Projects Section
         'section.projects.label': '02 / Proyectos',
         'section.projects.title': 'Cosas que he construido',
-        'section.projects.subtitle': 'Mi selección de proyectos personales donde diseñé las arquitecturas desde cero y construí backends optimizados y limpios, siempre siguiendo buenas prácticas.',
+        'section.projects.subtitle': 'Un caso a fondo y dos piezas de apoyo. En cada uno: mi rol, las decisiones técnicas y el resultado.',
+        'project.featured': 'Caso destacado · Backend',
         'project.garage.title': 'Garage API (Backend)',
-        'project.garage.desc': 'API RESTful asíncrona para el control de mantenimiento vehicular. Arquitecturada con FastAPI y PostgreSQL. Cuenta con un sistema de seguridad y autenticación mediante Tokens JWT y encriptación de contraseñas con Bcrypt. Incluye control de migraciones de base de datos con Alembic y validación estricta de datos con Pydantic.',
-        'project.respira-cali.title': 'Respira Cali (Backend/Frontend)',
-        'project.respira-cali.desc': 'Aplicación web desarrollada con HTML, CSS y Javascript para consultar y visualizar información sobre la calidad del aire en Cali. El proyecto fue construido con comprensión completa de la lógica implementada, el consumo de datos y la estructura del frontend.',
-        'project.vehicle-management-frontend.title': 'vehicle-management-frontend',
-        'project.vehicle-management-frontend.desc': 'Interfaz web interactiva (SPA) en Vanilla JS, HTML5 y CSS3 para la gestión de vehículos, mantenimientos preventivos y cálculo inteligente de servicios según el manual del propietario.',
+        'project.garage.role': 'Rol: diseño y construcción end-to-end — FastAPI + PostgreSQL',
+        'project.garage.desc': 'Problema: llevar el control de mantenimiento vehicular (vehículos, servicios, historial) a una API ordenada y segura en vez de registros sueltos. Decisión: FastAPI asíncrono, autenticación JWT con Bcrypt, validación estricta con Pydantic y migraciones versionadas con Alembic.',
+        'project.garage.o1': 'Auth JWT + hash Bcrypt: rutas protegidas y credenciales nunca en claro',
+        'project.garage.o2': 'Contratos Pydantic: errores de datos detectados antes de tocar la BD',
+        'project.garage.o3': 'Alembic: esquema evoluciona con migraciones reversibles',
+        'project.garage.note': 'Documentada con OpenAPI/Swagger autogenerado por FastAPI.',
+        'project.respira-cali.title': 'Respira Cali',
+        'project.respira-cali.role': 'Rol: frontend + consumo de API pública',
+        'project.respira-cali.desc': 'Consulta y visualiza la calidad del aire de Cali consumiendo una API REST. Mi aporte: arquitectura del frontend, manejo de estados de carga/error y presentación clara del dato.',
+        'project.respira-cali.o1': 'Consumo REST con manejo de errores y reintentos',
+        'project.respira-cali.o2': 'UI que explica el dato, no solo lo muestra',
+        'project.vehicle-management-frontend.title': 'Garage Frontend (SPA)',
+        'project.vehicle-management-frontend.role': 'Rol: SPA en Vanilla JS conectada a Garage API',
+        'project.vehicle-management-frontend.desc': 'Cliente de Garage API: gestión de vehículos y mantenimientos preventivos con cálculo de próximos servicios según manual del propietario.',
+        'project.vehicle-management-frontend.o1': 'SPA sin framework: routing y estado propios',
+        'project.vehicle-management-frontend.o2': 'Consume JWT de la API y refleja sus reglas',
         'project.view_code': 'Ver Código en GitHub',
 
         // Stack Section
@@ -251,6 +275,8 @@ function t(key, fallback = '') {
 // NAVBAR — SCROLL SPY + MOBILE MENU
 // ========================================
 function initNavbar() {
+    if (window._navInit) return;
+    window._navInit = true;
     const navLinks = document.querySelectorAll('.nav-link');
     const navToggle = document.getElementById('navToggle');
     const navLinksContainer = document.getElementById('navLinks');
@@ -328,30 +354,63 @@ function initScrollProgress() {
 function initTerminal() {
     const body = document.getElementById('terminalBody');
     if (!body) return;
+    // Guard: evita doble ejecución (el bug de líneas duplicadas)
+    if (body.dataset.initialized === '1') return;
+    body.dataset.initialized = '1';
+
+    // Limpia timeouts previos si existieran (HMR / doble llamada)
+    if (body._timers) body._timers.forEach(clearTimeout);
+    body._timers = [];
 
     let idx = 0;
     body.innerHTML = '';
 
+    function later(fn, ms) {
+        const id = setTimeout(fn, ms);
+        body._timers.push(id);
+    }
+
     function addLine() {
+        // Si el nodo fue reemplazado, aborta
+        if (!document.contains(body)) return;
         if (idx >= terminalLines.length) {
-            body.innerHTML += '<div class="terminal-line"><span class="terminal-prompt-char">$</span><span class="terminal-cursor-block"></span></div>';
+            const end = document.createElement('div');
+            end.className = 'terminal-line';
+            end.innerHTML = '<span class="terminal-prompt-char">$</span><span class="terminal-cursor-block"></span>';
+            body.appendChild(end);
             return;
         }
         const line = terminalLines[idx];
-        let html = '';
+        const div = document.createElement('div');
+        div.className = 'terminal-line';
         if (line.type === 'cmd') {
-            html = `<div class="terminal-line"><span class="terminal-prompt-char">$</span><span class="terminal-command">${line.text}</span></div>`;
+            const p = document.createElement('span');
+            p.className = 'terminal-prompt-char';
+            p.textContent = '$';
+            const c = document.createElement('span');
+            c.className = 'terminal-command';
+            c.textContent = line.text;
+            div.append(p, document.createTextNode(' '), c);
         } else if (line.type === 'out-ok') {
-            html = `<div class="terminal-line"><span class="terminal-output"><span class="ok">${line.text}</span></span></div>`;
+            const o = document.createElement('span');
+            o.className = 'terminal-output';
+            const ok = document.createElement('span');
+            ok.className = 'ok';
+            ok.textContent = line.text;
+            o.appendChild(ok);
+            div.appendChild(o);
         } else {
-            html = `<div class="terminal-line"><span class="terminal-output">${line.text}</span></div>`;
+            const o = document.createElement('span');
+            o.className = 'terminal-output';
+            o.textContent = line.text;
+            div.appendChild(o);
         }
-        body.innerHTML += html;
+        body.appendChild(div);
         idx++;
-        setTimeout(addLine, 500);
+        later(addLine, line.type === 'cmd' ? 550 : 320);
     }
 
-    setTimeout(addLine, 800);
+    later(addLine, 700);
 }
 
 // ========================================
@@ -360,12 +419,17 @@ function initTerminal() {
 function initTypewriter() {
     const el = document.getElementById('typewriter');
     if (!el) return;
+    // Guard: evita dos loops escribiendo a la vez
+    if (el.dataset.initialized === '1') return;
+    el.dataset.initialized = '1';
+    if (el._timer) clearTimeout(el._timer);
 
     let phraseIdx = 0, charIdx = 0, isDeleting = false;
 
     function tick() {
+        if (!document.contains(el)) return;
         const key = typewriterKeys[phraseIdx];
-        const current = t(key);
+        const current = t(key) || '';
 
         if (isDeleting) {
             charIdx--;
@@ -377,19 +441,21 @@ function initTypewriter() {
 
         let delay = isDeleting ? 30 : 65;
 
-        if (!isDeleting && charIdx === current.length) {
+        if (!isDeleting && charIdx >= current.length) {
+            charIdx = current.length;
             delay = 2000;
             isDeleting = true;
-        } else if (isDeleting && charIdx === 0) {
+        } else if (isDeleting && charIdx <= 0) {
+            charIdx = 0;
             isDeleting = false;
             phraseIdx = (phraseIdx + 1) % typewriterKeys.length;
             delay = 400;
         }
 
-        setTimeout(tick, delay);
+        el._timer = setTimeout(tick, delay);
     }
 
-    setTimeout(tick, 600);
+    el._timer = setTimeout(tick, 600);
 }
 
 // ========================================
@@ -410,29 +476,32 @@ function initReveal() {
 }
 
 // ========================================
-// INITIALIZATION
+// SINGLE INITIALIZATION (se eliminó el bloque duplicado
+// que causaba doble terminal / typewriter / navbar)
 // ========================================
-document.addEventListener('DOMContentLoaded', () => {
-    // Language & Email Setup
-    setLanguage(currentLang);
-    setupEmail();
-
-    // Language buttons
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
-    });
-
-    // Core functionality
-    initNavbar();
-    initScrollProgress();
-    initTerminal();
-    initTypewriter();
-    initReveal();
-});
 
 // ========================================
-// THEME TOGGLE (DARK/LIGHT MODE)
+// THEME TOGGLE (DARK/LIGHT MODE) — FASES LUNARES
+// dark = Luna llena · light = Luna nueva
 // ========================================
+function getMoonPhaseLabel(theme) {
+    if (theme === 'light') {
+        return currentLang === 'en' ? 'New moon · stealth mode' : 'Luna nueva · modo sigiloso';
+    }
+    return currentLang === 'en' ? 'Full moon · stable signal' : 'Luna llena · señal estable';
+}
+
+function updateMoonPhase(theme) {
+    const label = document.getElementById('moonPhaseLabel');
+    if (label) label.textContent = getMoonPhaseLabel(theme);
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+        toggle.setAttribute('aria-label', theme === 'light'
+            ? (currentLang === 'en' ? 'Switch to full moon' : 'Cambiar a luna llena')
+            : (currentLang === 'en' ? 'Switch to new moon' : 'Cambiar a luna nueva'));
+    }
+}
+
 function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
     const icon = themeToggle ? themeToggle.querySelector('i') : null;
@@ -441,6 +510,7 @@ function initThemeToggle() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme, icon);
+    updateMoonPhase(savedTheme);
     
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
@@ -450,6 +520,7 @@ function initThemeToggle() {
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme, icon);
+            updateMoonPhase(newTheme);
         });
     }
 }
@@ -519,6 +590,123 @@ function initContactForm() {
 }
 
 // ========================================
+// LUNA INMERSIVA — starfield + parallax
+// ========================================
+function initStarfield() {
+    const canvas = document.getElementById('starCanvas');
+    if (!canvas) return;
+    if (canvas.dataset.initialized === '1') return;
+    canvas.dataset.initialized = '1';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    let shooting = [];
+    let w = 0, h = 0, raf = null;
+    let mx = 0, my = 0;
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w * DPR;
+        canvas.height = h * DPR;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+        const count = Math.min(190, Math.floor((w * h) / 9500));
+        stars = Array.from({ length: count }, () => ({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 1.4 + 0.3,
+            base: Math.random() * 0.55 + 0.25,
+            speed: Math.random() * 1.4 + 0.3,
+            depth: Math.random() * 0.8 + 0.2,
+            phase: Math.random() * Math.PI * 2
+        }));
+    }
+
+    function spawnShooting() {
+        shooting.push({
+            x: Math.random() * w * 0.8 + w * 0.1,
+            y: Math.random() * h * 0.3,
+            vx: -(Math.random() * 5 + 5),
+            vy: Math.random() * 2.5 + 1.5,
+            life: 1
+        });
+        setTimeout(spawnShooting, 6000 + Math.random() * 7000);
+    }
+
+    function frame(time) {
+        ctx.clearRect(0, 0, w, h);
+        const t = time / 1000;
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
+        for (const s of stars) {
+            const tw = s.base + Math.sin(t * s.speed + s.phase) * 0.28;
+            const alpha = isLight ? tw * 0.25 : tw;
+            ctx.beginPath();
+            ctx.arc(s.x + mx * 14 * s.depth, s.y + my * 10 * s.depth, s.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(226, 232, 255, ${alpha.toFixed(3)})`;
+            ctx.fill();
+        }
+
+        // Destellos en cruz para las más grandes
+        for (let i = 0; i < stars.length; i += 23) {
+            const s = stars[i];
+            if (!s) continue;
+            const a = isLight ? 0.08 : 0.22 + Math.sin(t * 1.2 + s.phase) * 0.1;
+            if (a <= 0.02) continue;
+            ctx.strokeStyle = `rgba(220,228,255,${a.toFixed(3)})`;
+            ctx.lineWidth = 1;
+            const L = 7;
+            ctx.beginPath();
+            ctx.moveTo(s.x - L, s.y); ctx.lineTo(s.x + L, s.y);
+            ctx.moveTo(s.x, s.y - L); ctx.lineTo(s.x, s.y + L);
+            ctx.stroke();
+        }
+
+        shooting = shooting.filter(p => p.life > 0);
+        for (const p of shooting) {
+            p.x += p.vx; p.y += p.vy; p.life -= 0.016;
+            const grad = ctx.createLinearGradient(p.x, p.y, p.x - p.vx * 8, p.y - p.vy * 8);
+            grad.addColorStop(0, `rgba(255,255,255,${(0.85 * p.life).toFixed(3)})`);
+            grad.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.6;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x - p.vx * 8, p.y - p.vy * 8);
+            ctx.stroke();
+        }
+
+        raf = requestAnimationFrame(frame);
+    }
+
+    window.addEventListener('mousemove', (e) => {
+        mx = (e.clientX / w - 0.5) * 2;
+        my = (e.clientY / h - 0.5) * 2;
+        document.documentElement.style.setProperty('--mx', mx.toFixed(3));
+        document.documentElement.style.setProperty('--my', my.toFixed(3));
+    }, { passive: true });
+
+    window.addEventListener('scroll', () => {
+        const y = Math.min(window.scrollY, window.innerHeight);
+        document.documentElement.style.setProperty('--scrollY', (y * 0.12).toFixed(1) + 'px');
+    }, { passive: true });
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden && raf) { cancelAnimationFrame(raf); raf = null; }
+        else if (!document.hidden && !raf) { raf = requestAnimationFrame(frame); }
+    });
+
+    window.addEventListener('resize', resize);
+    resize();
+    raf = requestAnimationFrame(frame);
+    setTimeout(spawnShooting, 3500);
+}
+
+// ========================================
 // ACCESSIBILITY ENHANCEMENTS
 // ========================================
 function initAccessibility() {
@@ -551,9 +739,15 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentLang);
     setupEmail();
 
-    // Language buttons
+    // Language buttons (refrescan también la fase lunar)
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        btn.addEventListener('click', () => {
+            setLanguage(btn.getAttribute('data-lang'));
+            setTimeout(() => {
+                const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+                updateMoonPhase(theme);
+            }, 60);
+        });
     });
 
     // Core functionality
@@ -567,6 +761,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initContactForm();
     initAccessibility();
+    initStarfield();
 });
 
 // ========================================
@@ -587,3 +782,5 @@ translations.es['form.submit'] = 'Enviar Mensaje';
 translations.es['form.sending'] = 'Enviando...';
 translations.es['form.success'] = '¡Mensaje enviado con éxito!';
 translations.es['form.error'] = 'Error al enviar. Intenta de nuevo.';
+translations.en['hero.scroll'] = 'Scroll to explore the orbit';
+translations.es['hero.scroll'] = 'Desliza para explorar la órbita';

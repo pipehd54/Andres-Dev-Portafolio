@@ -1424,3 +1424,685 @@ img[loading="lazy"] {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+
+/* ============================================================
+   LUNA INMERSIVA v3 — cielo vivo + luna interactiva + fases
+   (sobrescribe la luna pálida anterior, mantiene legibilidad)
+   ============================================================ */
+:root {
+  --mx: 0;
+  --my: 0;
+  --moon-size: 280px;
+  --moon-glow: rgba(214, 224, 255, 0.35);
+}
+
+/* Apagamos la luna vieja dibujada en el fondo */
+.bg-gradient::after { display: none; }
+.bg-gradient::before { opacity: 0.35; }
+
+/* Cielo de estrellas */
+#starCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+/* Hero necesita contexto para la luna */
+.hero { position: relative; overflow: clip; padding-bottom: 5.5rem; }
+.hero-container { position: relative; z-index: 2; }
+
+/* Escena lunar — anclada al hero, nunca cortada por el viewport */
+.moon-stage {
+  position: absolute;
+  top: 110px;
+  right: clamp(24px, 5vw, 90px);
+  width: var(--moon-size);
+  height: var(--moon-size);
+  z-index: 1;
+  pointer-events: none;
+  transform: translate3d(calc(var(--mx) * 22px), calc(var(--my) * 18px + var(--scrollY, 0px)), 0);
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+
+.moon-halo {
+  position: absolute;
+  inset: -22%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--moon-glow) 0%, rgba(150,170,230,0.12) 42%, transparent 68%);
+  filter: blur(6px);
+  animation: haloBreathe 6s ease-in-out infinite;
+}
+
+.moon {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, #ffffff 0 6%, rgba(255,255,255,0.9) 12%, transparent 26%),
+    radial-gradient(circle at 38% 34%, #f3f5ff 0%, #d9e0f5 38%, #aeb9d4 68%, #7f8cae 100%);
+  box-shadow:
+    0 0 60px rgba(205, 216, 255, 0.45),
+    0 0 140px rgba(150, 170, 235, 0.22),
+    inset -18px -22px 50px rgba(60, 70, 110, 0.45),
+    inset 10px 12px 30px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  transition: box-shadow 0.6s ease, filter 0.6s ease;
+}
+
+.moon-crater {
+  position: absolute;
+  border-radius: 50%;
+  /* Cráter real: hundido y oscuro, no esfera brillante */
+  background: radial-gradient(circle at 38% 34%, #8d99bd 0%, #6d7899 45%, #4a5473 78%, #3a435e 100%);
+  box-shadow: inset 4px 6px 12px rgba(20, 26, 48, 0.55), inset -2px -2px 6px rgba(255, 255, 255, 0.35), 0 1px 2px rgba(255,255,255,0.25);
+  opacity: 0.85;
+}
+.moon-crater.c1 { width: 17%; height: 17%; left: 22%; top: 30%; }
+.moon-crater.c2 { width: 11%; height: 11%; left: 58%; top: 22%; }
+.moon-crater.c3 { width: 22%; height: 22%; left: 48%; top: 52%; }
+.moon-crater.c4 { width: 9%; height: 9%; left: 30%; top: 64%; }
+.moon-crater.c5 { width: 7%; height: 7%; left: 68%; top: 60%; }
+
+/* Sombra = fase lunar. En dark (llena) se esconde; en light (nueva) cubre */
+.moon-shadow {
+  position: absolute;
+  inset: -2%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 70% 40%, #0b1026 55%, #070918 100%);
+  transform: translateX(110%);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease;
+}
+[data-theme="light"] .moon-shadow { transform: translateX(24%); opacity: 1; }
+[data-theme="light"] .moon {
+  box-shadow: 0 0 30px rgba(2,132,199,0.25), 0 0 0 2px rgba(2,132,199,0.25), inset -10px -12px 30px rgba(0,0,0,0.35);
+  filter: saturate(0.85);
+}
+[data-theme="light"] #starCanvas { opacity: 0.18; }
+
+/* Órbita + satélite */
+.moon-orbit {
+  position: absolute;
+  inset: -13%;
+  border: 1px dashed rgba(200, 212, 255, 0.28);
+  border-radius: 50%;
+  animation: orbitSpin 26s linear infinite;
+}
+.orbit-sat {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #eef1ff;
+  box-shadow: 0 0 12px #dfe6ff, 0 0 3px #fff;
+}
+.orbit-sat::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(220,228,255,0.35);
+}
+
+/* Etiqueta de fase */
+.moon-caption {
+  position: absolute;
+  bottom: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  background: rgba(10, 14, 30, 0.55);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+}
+.moon-caption-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #dfe6ff;
+  box-shadow: 0 0 8px #dfe6ff;
+  animation: pulse 2.4s ease infinite;
+}
+
+/* Toggle con fase */
+.theme-toggle { position: relative; gap: 0.4rem; }
+.phase-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e8edff;
+  box-shadow: 0 0 8px rgba(232,237,255,0.9);
+  transition: all 0.5s ease;
+}
+[data-theme="light"] .phase-dot {
+  background: transparent;
+  box-shadow: inset -2px 1px 0 1.5px #0284c7;
+}
+
+/* Scroll hint lunar — en flujo, centrado, sin cortarse ni tapar la terminal */
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 3rem auto 0;
+  width: fit-content;
+  max-width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  z-index: 2;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+.scroll-hint-mouse {
+  width: 22px;
+  height: 34px;
+  border: 1px solid var(--border-hover);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+.scroll-hint-wheel {
+  width: 3px;
+  height: 7px;
+  border-radius: 3px;
+  background: var(--accent);
+  animation: wheelDrop 1.8s ease infinite;
+}
+
+/* Toques premium para reclutadores: hero más jerárquico */
+.hero-title { text-shadow: 0 2px 30px rgba(0,0,0,0.45); }
+.hero-content { position: relative; }
+/* (línea lateral eliminada: en la captura se veía como raya suelta a la izquierda) */
+.project-card:hover { box-shadow: 0 14px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(210,220,255,0.12), 0 0 32px rgba(170,190,255,0.12); }
+.terminal { position: relative; }
+.terminal::after {
+  content: 'moonlink · secure';
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--text-subtle);
+  opacity: 0.7;
+}
+
+/* Animaciones */
+@keyframes orbitSpin { to { transform: rotate(360deg); } }
+@keyframes haloBreathe { 0%,100% { opacity: 0.9; transform: scale(1); } 50% { opacity: 0.65; transform: scale(1.04); } }
+@keyframes wheelDrop { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(10px); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }
+
+/* Responsive: luna de fondo, no tapa texto ni se corta */
+@media (max-width: 1100px) {
+  :root { --moon-size: 230px; }
+  .moon-stage { top: 84px; right: 8px; opacity: 0.5; }
+  .moon-caption { display: none; }
+}
+@media (max-width: 600px) {
+  :root { --moon-size: 160px; }
+  .moon-stage { top: 66px; right: -10px; opacity: 0.32; }
+  .moon-orbit { inset: -10%; }
+  .scroll-hint { display: none; }
+}
+
+/* Movimiento reducido: cielo quieto */
+@media (prefers-reduced-motion: reduce) {
+  .moon-stage { transform: none !important; }
+  .moon-halo, .moon-orbit, .scroll-hint-wheel, .moon-caption-dot { animation: none !important; }
+  #starCanvas { display: none; }
+}
+
+/* ============================================================
+   PROYECTOS QUE VENDEN — destacado + outcomes + prueba
+   ============================================================ */
+.project-role {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent);
+  margin: -0.35rem 0 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.outcome-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 0 1.2rem;
+  padding: 0.9rem 1rem;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.16);
+  border-radius: var(--radius-sm);
+}
+.outcome-list li {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  font-size: 0.86rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+.outcome-list i {
+  color: var(--accent-emerald);
+  font-size: 0.75rem;
+  margin-top: 0.3rem;
+}
+.outcome-list.compact {
+  background: rgba(201, 213, 255, 0.04);
+  border-color: var(--border);
+  margin-bottom: 1.2rem;
+}
+.outcome-list.compact i { color: var(--accent); }
+
+.project-card.featured {
+  border-color: var(--border-hover);
+  background: linear-gradient(145deg, rgba(32, 40, 78, 0.85), rgba(13, 17, 36, 0.85));
+}
+.project-card.featured .project-number {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  background: rgba(201, 213, 255, 0.1);
+  border: 1px solid var(--border-hover);
+  border-radius: 100px;
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 900px) {
+  .project-card.featured { grid-column: 1 / -1; }
+  .featured-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+}
+
+.arch-snippet {
+  background: #090e1a;
+  border: 1px solid var(--border-solid);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+.arch-snippet-head {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.8rem;
+  background: #0f172a;
+  border-bottom: 1px solid var(--border-solid);
+}
+.arch-snippet-head span { width: 9px; height: 9px; border-radius: 50%; background: #39446e; }
+.arch-snippet-head em { margin-left: auto; font-style: normal; color: var(--text-subtle); font-size: 0.68rem; }
+.arch-snippet pre { padding: 1rem; overflow-x: auto; line-height: 1.7; color: #c9d5ff; }
+.proof-note {
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   BRUTALISMO SOVIÉTICO — cartel constructivista + luna plana
+   Tinta, papel, rojo. Bordes duros, nada de cristal.
+   ============================================================ */
+:root {
+  --font-display: 'Archivo Black', 'Space Grotesk', system-ui, sans-serif;
+  --bg: #171310;
+  --bg-subtle: #211b14;
+  --surface: #221c14;
+  --surface-hover: #2b2317;
+  --surface-card: #211b14;
+  --border: #4c4232;
+  --border-hover: #e2482a;
+  --border-solid: #ece0c4;
+  --accent: #e2482a;
+  --accent-hover: #ff6a45;
+  --accent-glow: rgba(226, 72, 42, 0.16);
+  --accent-emerald: #d9a521;
+  --secondary: #e2482a;
+  --text: #efe4c9;
+  --text-muted: #c3b394;
+  --text-subtle: #8d7f66;
+  --shadow-sm: 4px 4px 0 #000;
+  --shadow-md: 6px 6px 0 #000;
+  --shadow-lg: 10px 10px 0 #000;
+  --radius: 0px;
+  --radius-sm: 0px;
+  --ink: #0d0b08;
+  --paper: #ece0c4;
+  --red: #e2482a;
+}
+
+[data-theme="light"] {
+  --bg: #e7dcc3;
+  --bg-subtle: #d9cdae;
+  --surface: #efe5cc;
+  --surface-hover: #f6eeda;
+  --surface-card: #f2e8cf;
+  --border: #8a7c60;
+  --border-hover: #b32b12;
+  --border-solid: #1c1610;
+  --accent: #b32b12;
+  --accent-hover: #8e200d;
+  --accent-glow: rgba(179, 43, 18, 0.14);
+  --accent-emerald: #7a6200;
+  --secondary: #b32b12;
+  --text: #1c1610;
+  --text-muted: #4a4132;
+  --text-subtle: #6e6250;
+  --shadow-sm: 4px 4px 0 #1c1610;
+  --shadow-md: 6px 6px 0 #1c1610;
+  --shadow-lg: 10px 10px 0 #1c1610;
+  --ink: #1c1610;
+  --paper: #efe5cc;
+  --red: #b32b12;
+}
+
+/* Papel + grano de hormigón */
+body {
+  background-color: var(--bg);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(236, 224, 196, 0.025) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(236, 224, 196, 0.02) 0 1px, transparent 1px 4px);
+}
+::selection { background: var(--red); color: var(--paper); }
+
+/* Fondo: plano + viga roja diagonal + retícula */
+.bg-gradient {
+  background:
+    linear-gradient(115deg, transparent 62%, var(--accent-glow) 62%, var(--accent-glow) 78%, transparent 78%),
+    var(--bg);
+}
+.bg-gradient::before { opacity: 0.16; }
+
+/* ---- Navegación: barra sólida ---- */
+.nav {
+  background: var(--bg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 3px solid var(--border-solid);
+  box-shadow: 0 4px 0 var(--red);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--border-solid);
+}
+[data-theme="light"] .nav-logo { background: var(--ink); color: var(--paper); }
+.nav-logo::before { display: none; }
+.nav-logo::after { content: '★'; color: var(--red); margin-left: 0.5rem; }
+.nav-link {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  border: 2px solid transparent;
+  border-radius: 0;
+}
+.nav-link:hover { background: transparent; color: var(--text); border-color: var(--border); }
+.nav-link.active {
+  background: var(--red);
+  color: #fff8e8;
+  border: 2px solid var(--border-solid);
+  font-weight: 700;
+}
+.lang-switcher { border: 2px solid var(--border-solid); border-radius: 0; background: transparent; }
+.lang-btn { border-radius: 0; text-transform: uppercase; }
+.lang-btn.active { background: var(--red); color: #fff8e8; }
+.theme-toggle { border: 2px solid var(--border-solid); border-radius: 0; }
+.theme-toggle:hover { background: var(--red); color: #fff8e8; border-color: var(--border-solid); }
+
+/* ---- Cinta constructivista ---- */
+.ticker {
+  border-top: 3px solid var(--border-solid);
+  border-bottom: 3px solid var(--border-solid);
+  background: var(--red);
+  color: #fff4dd;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.55rem 0;
+  animation: tickerMove 22s linear infinite;
+}
+@keyframes tickerMove { to { transform: translateX(-50%); } }
+
+/* ---- Hero cartel ---- */
+.hero-badge {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  border: 2px solid var(--red);
+  border-radius: 0;
+  background: transparent;
+  transform: rotate(-1.5deg);
+  box-shadow: 4px 4px 0 var(--red);
+}
+.hero-badge-dot { border-radius: 0; background: var(--red); box-shadow: none; animation: none; width: 9px; height: 9px; }
+.hero-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.95;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  text-shadow: 4px 4px 0 var(--red);
+}
+.hero-title .accent { color: var(--red); }
+.hero-role {
+  display: inline-flex;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--border-solid);
+  box-shadow: var(--shadow-sm);
+  padding: 0.45rem 0.8rem;
+  font-weight: 700;
+}
+.hero-role .prompt { color: var(--red); }
+.typed-cursor { background: var(--red); border-radius: 0; }
+.hero-description { border-left: 6px solid var(--red); padding-left: 1rem; }
+.hero-cta .btn { border-radius: 0; border: 3px solid var(--border-solid); text-transform: uppercase; letter-spacing: 0.06em; }
+.btn-primary { background: var(--red); color: #fff6e2; box-shadow: 5px 5px 0 var(--ink); }
+.btn-primary:hover { background: var(--accent-hover); color: #fff6e2; transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.btn-ghost { background: transparent; box-shadow: 5px 5px 0 transparent; }
+.btn-ghost:hover { border-color: var(--border-solid); color: var(--text); background: var(--surface-hover); transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--red); }
+.hero-stats { border-top: 3px solid var(--border-solid); }
+.stat-value { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; }
+.stat-label { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ---- Luna plana de cartel (sigue interactiva) ---- */
+.moon-halo {
+  inset: -6%;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0.9;
+  filter: none;
+  animation: none;
+  transform: translate(14px, 10px);
+}
+.moon {
+  background: #ece0c4;
+  border: 4px solid var(--ink);
+  box-shadow: none;
+  overflow: hidden;
+}
+.moon-crater {
+  background: #c9b78f;
+  border: 3px solid var(--ink);
+  box-shadow: none;
+  opacity: 1;
+}
+.moon-shadow { background: #171310; }
+[data-theme="light"] .moon { box-shadow: none; filter: none; }
+[data-theme="light"] .moon-shadow { background: var(--ink); }
+.moon-orbit { border: 2px dashed var(--text); inset: -11%; }
+.orbit-sat {
+  width: 12px; height: 12px; border-radius: 0;
+  background: var(--red);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.orbit-sat::after { display: none; }
+.moon-caption {
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--border-solid);
+  transform: translateX(-50%) rotate(1deg);
+  box-shadow: 4px 4px 0 var(--red);
+}
+.moon-caption-dot { border-radius: 0; background: var(--red); box-shadow: none; animation: none; }
+
+/* ---- Terminal central ---- */
+.terminal {
+  background: #0e0b08;
+  border: 3px solid var(--border-solid);
+  border-radius: 0;
+  box-shadow: 8px 8px 0 var(--ink), 8px 8px 0 3px var(--red);
+}
+.terminal-header { background: var(--red); border-bottom: 3px solid var(--border-solid); border-radius: 0; }
+.terminal-header-title { color: #fff4dd; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.terminal-dot { border-radius: 0; border: 2px solid var(--ink); }
+.terminal-dot.red, .terminal-dot.yellow, .terminal-dot.green { background: var(--paper); }
+.terminal-body { color: #efe4c9; }
+.terminal-command { color: #fff4dd; font-weight: 700; }
+.terminal-prompt-char { color: var(--red); font-weight: 700; }
+.terminal-output { color: #c9b78f; }
+.terminal-output .ok, .status-value { color: #ffd97a; }
+.terminal-cursor-block { background: var(--red); border-radius: 0; }
+.terminal::after { content: '★ TERMINAL CENTRAL'; color: var(--red); font-weight: 700; }
+
+/* ---- Secciones cartel ---- */
+.section-label {
+  display: inline-flex;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--border-solid);
+  box-shadow: 4px 4px 0 var(--red);
+  padding: 0.3rem 0.8rem;
+  letter-spacing: 0.18em;
+}
+.section-label::before { content: '★'; width: auto; height: auto; background: none; color: var(--red); }
+.section-title { font-family: var(--font-display); text-transform: uppercase; font-weight: 400; letter-spacing: 0; }
+.section-subtitle { border-left: 6px solid var(--red); padding-left: 1rem; }
+
+/* ---- Tarjetas: bloques de hormigón ---- */
+.project-card,
+.stack-category,
+.about-detail,
+.contact-card,
+.status-card,
+.contact-form {
+  border-radius: 0 !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--surface);
+  border: 3px solid var(--border-solid);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.55);
+}
+[data-theme="light"] .project-card,
+[data-theme="light"] .stack-category,
+[data-theme="light"] .about-detail,
+[data-theme="light"] .contact-card,
+[data-theme="light"] .status-card,
+[data-theme="light"] .contact-form { box-shadow: 8px 8px 0 var(--ink); }
+.project-card::before { height: 8px; background: var(--red); opacity: 1; }
+.project-card:hover,
+.stack-category:hover,
+.contact-card:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--red); background: var(--surface-hover); }
+.project-number {
+  background: var(--ink); color: var(--paper);
+  padding: 0.25rem 0.6rem; border: 2px solid var(--border-solid);
+  letter-spacing: 0.1em;
+}
+.project-card.featured { border-color: var(--red); }
+.project-card.featured .project-number { background: var(--red); border-color: var(--border-solid); }
+.project-card-title { font-family: var(--font-display); text-transform: uppercase; font-weight: 400; letter-spacing: 0; }
+.project-role { color: var(--red); font-weight: 700; }
+.tag-mono, .stack-item {
+  border-radius: 0; border: 2px solid var(--border-solid);
+  background: transparent; text-transform: uppercase; font-weight: 700;
+}
+.tag-mono i, .stack-item i, .stack-category-icon, .contact-icon { color: var(--red); }
+.project-card:hover .tag-mono { border-color: var(--red); }
+.btn-card-primary { border-radius: 0; border: 3px solid var(--border-solid); background: var(--red); color: #fff6e2; text-transform: uppercase; }
+.btn-card-primary:hover { background: var(--accent-hover); color: #fff6e2; border-color: var(--border-solid); }
+.outcome-list { border-radius: 0; border: 2px solid var(--border-solid); background: transparent; }
+.outcome-list i { color: var(--red); }
+.stack-category-header { font-family: var(--font-display); text-transform: uppercase; font-weight: 400; }
+.about-detail-label { color: var(--red); font-weight: 700; }
+.status-card-header { border-bottom: 3px solid var(--border-solid); }
+.pulse-dot { border-radius: 0; background: var(--red); box-shadow: none; animation: none; width: 11px; height: 11px; }
+.contact-icon { border-radius: 0; border: 2px solid var(--border-solid); background: var(--ink); color: var(--paper); }
+.contact-icon i { color: var(--paper); }
+.copy-email-btn { border-radius: 0; border: 2px solid var(--border-solid); }
+.copy-tooltip { border-radius: 0; background: var(--red); color: #fff6e2; }
+.arch-snippet { border: 3px solid var(--border-solid); border-radius: 0; }
+.arch-snippet-head { background: var(--ink); border-bottom: 3px solid var(--border-solid); }
+.arch-snippet-head span { border-radius: 0; background: var(--red); border: 1px solid var(--paper); }
+.arch-snippet pre { color: #efe4c9; }
+
+/* ---- Formulario ---- */
+.form-group label { color: var(--red); font-weight: 700; }
+.form-group input, .form-group textarea {
+  border-radius: 0; border: 2px solid var(--border-solid);
+  background: var(--bg); box-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+}
+.form-group input:focus, .form-group textarea:focus { box-shadow: 4px 4px 0 var(--red); border-color: var(--red); }
+
+/* ---- Footer ---- */
+.main-footer { border-top: 3px solid var(--border-solid); background: var(--ink); }
+.main-footer .footer-content { color: var(--paper); text-transform: uppercase; }
+.footer-dot { color: var(--red); }
+
+/* ---- Progreso scroll ---- */
+.scroll-progress { background: var(--red); box-shadow: none; height: 5px; }
+
+/* ---- Reveal: entrada dura de cartel ---- */
+[data-reveal] { transform: translateY(14px); }
+
+/* ---- Responsive cartel ---- */
+@media (max-width: 600px) {
+  .hero-title { font-size: clamp(2.6rem, 14vw, 3.4rem); text-shadow: 3px 3px 0 var(--red); }
+  .project-card, .stack-category, .contact-card, .status-card { box-shadow: 5px 5px 0 rgba(0,0,0,0.55); }
+}
+
+/* ---- Movimiento reducido ---- */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+}

@@ -30,12 +30,12 @@
     <!-- Stylesheets -->
     <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-RXf+QSDCUQs6b4v5A9R2v6KUVKp1R9+XcMgy7pYzFSHLn3U4a8gE9F7R5C3XxR28Z59TLEEqzvvR1vpuYeIRsA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#070c18">
+    <meta name="theme-color" content="#16130e">
     
     <!-- Schema.org Markup -->
     <script type="application/ld+json">
@@ -57,8 +57,10 @@
 </head>
 <body>
 
+    <!-- Luna inmersiva: cielo + luna -->
+    <canvas id="starCanvas" aria-hidden="true"></canvas>
     <!-- Ambient Background -->
-    <div class="bg-gradient"></div>
+    <div class="bg-gradient" aria-hidden="true"></div>
 
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -75,9 +77,10 @@
                 <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
             </ul>
             <div class="nav-actions">
-                <!-- Dark/Light Mode Toggle -->
-                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                <!-- Fase lunar / Dark-Light -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar fase lunar">
                     <i class="fas fa-moon"></i>
+                    <span class="phase-dot" aria-hidden="true"></span>
                 </button>
                 <div class="lang-switcher">
                     <button class="lang-btn" data-lang="en">EN</button>
@@ -92,7 +95,21 @@
 
     <!-- 01: Hero -->
     <section class="hero" id="hero">
-        <div class="container">
+        <!-- Escena lunar interactiva -->
+        <div class="moon-stage" id="moonStage" aria-hidden="true">
+            <div class="moon-halo"></div>
+            <div class="moon-orbit"><span class="orbit-sat"></span></div>
+            <div class="moon" id="moon">
+                <span class="moon-crater c1"></span>
+                <span class="moon-crater c2"></span>
+                <span class="moon-crater c3"></span>
+                <span class="moon-crater c4"></span>
+                <span class="moon-crater c5"></span>
+                <span class="moon-shadow"></span>
+            </div>
+            <div class="moon-caption"><span class="moon-caption-dot"></span><span id="moonPhaseLabel">Luna llena · señal estable</span></div>
+        </div>
+        <div class="container hero-container">
             <div class="hero-grid">
                 <div class="hero-content">
                     <div class="hero-badge" data-reveal>
@@ -146,8 +163,20 @@
                     </div>
                 </div>
             </div>
+            <a href="#projects" class="scroll-hint" aria-label="Ver proyectos">
+                <span class="scroll-hint-mouse"><span class="scroll-hint-wheel"></span></span>
+                <span class="scroll-hint-text" data-i18n="hero.scroll">Desliza para explorar la órbita</span>
+            </a>
         </div>
     </section>
+
+    <!-- Cinta constructivista -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+            <span>Backend ★ FastAPI ★ PostgreSQL ★ JWT ★ Alembic ★ Pydantic ★ Python ★&nbsp;</span>
+            <span>Backend ★ FastAPI ★ PostgreSQL ★ JWT ★ Alembic ★ Pydantic ★ Python ★&nbsp;</span>
+        </div>
+    </div>
 
     <!-- 02: Projects -->
     <section id="projects">
@@ -155,42 +184,69 @@
             <div class="section-header" data-reveal>
                 <div class="section-label" data-i18n="section.projects.label">02 / Proyectos</div>
                 <h2 class="section-title" data-i18n="section.projects.title">Cosas que he construido</h2>
-                <p class="section-subtitle" data-i18n="section.projects.subtitle">Mi selección de proyectos personales donde diseñé las arquitecturas desde cero y construí backends optimizados y limpios, siempre siguiendo buenas prácticas.</p>
+                <p class="section-subtitle" data-i18n="section.projects.subtitle">Un caso a fondo y dos piezas de apoyo. En cada uno: mi rol, las decisiones técnicas y el resultado.</p>
             </div>
             <div class="projects-grid">
-                <article class="project-card" data-reveal>
+                <!-- Destacado: Garage API -->
+                <article class="project-card featured" data-reveal>
                     <div class="project-card-header">
-                        <span class="project-number">PROY_001</span>
+                        <span class="project-number"><i class="fas fa-star"></i> <span data-i18n="project.featured">Caso destacado · Backend</span></span>
                         <span class="project-year">2024</span>
                     </div>
-                    <h3 class="project-card-title" data-i18n="project.garage.title">Garage API (Backend)</h3>
-                    <p class="project-card-desc" data-i18n="project.garage.desc">
-                        API RESTful asíncrona para el control de mantenimiento vehicular. Arquitecturada con FastAPI y PostgreSQL. Cuenta con un sistema de seguridad y autenticación mediante Tokens JWT y encriptación de contraseñas con Bcrypt. Incluye control de migraciones de base de datos con Alembic y validación estricta de datos con Pydantic.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag-mono"><i class="fas fa-bolt"></i> FastAPI</span>
-                        <span class="tag-mono"><i class="fas fa-database"></i> PostgreSQL</span>
-                        <span class="tag-mono"><i class="fas fa-key"></i> JWT</span>
-                        <span class="tag-mono"><i class="fas fa-code-branch"></i> Alembic</span>
-                        <span class="tag-mono"><i class="fas fa-shield-halved"></i> Pydantic</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/pipehd54/vehicle-management-backend.git" target="_blank" rel="noopener noreferrer" class="btn btn-card-primary">
-                            <i class="fab fa-github"></i>
-                            <span data-i18n="project.view_code">Ver Código en GitHub</span>
-                        </a>
+                    <div class="featured-grid">
+                        <div class="featured-main">
+                            <h3 class="project-card-title" data-i18n="project.garage.title">Garage API (Backend)</h3>
+                            <p class="project-role" data-i18n="project.garage.role">Rol: diseño y construcción end-to-end — FastAPI + PostgreSQL</p>
+                            <p class="project-card-desc" data-i18n="project.garage.desc">
+                                Problema: llevar el control de mantenimiento vehicular (vehículos, servicios, historial) a una API ordenada y segura en vez de registros sueltos. Decisión: FastAPI asíncrono, autenticación JWT con Bcrypt, validación estricta con Pydantic y migraciones versionadas con Alembic.
+                            </p>
+                            <ul class="outcome-list">
+                                <li><i class="fas fa-check"></i><span data-i18n="project.garage.o1">Auth JWT + hash Bcrypt: rutas protegidas y credenciales nunca en claro</span></li>
+                                <li><i class="fas fa-check"></i><span data-i18n="project.garage.o2">Contratos Pydantic: errores de datos detectados antes de tocar la BD</span></li>
+                                <li><i class="fas fa-check"></i><span data-i18n="project.garage.o3">Alembic: esquema evoluciona con migraciones reversibles</span></li>
+                            </ul>
+                            <div class="project-tags">
+                                <span class="tag-mono"><i class="fas fa-bolt"></i> FastAPI async</span>
+                                <span class="tag-mono"><i class="fas fa-database"></i> PostgreSQL</span>
+                                <span class="tag-mono"><i class="fas fa-key"></i> JWT + Bcrypt</span>
+                                <span class="tag-mono"><i class="fas fa-code-branch"></i> Alembic</span>
+                                <span class="tag-mono"><i class="fas fa-shield-halved"></i> Pydantic</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://github.com/pipehd54/vehicle-management-backend.git" target="_blank" rel="noopener noreferrer" class="btn btn-card-primary">
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="project.view_code">Ver Código en GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="featured-proof">
+                            <div class="arch-snippet" aria-label="Ejemplo de endpoints">
+                                <div class="arch-snippet-head"><span></span><span></span><span></span><em>api · endpoints</em></div>
+<pre><code>POST /auth/login      → JWT
+GET  /vehicles        → lista + filtros
+POST /vehicles        → validado con Pydantic
+GET  /maintenance/due → próximos servicios
+$ alembic upgrade head → esquema al día</code></pre>
+                            </div>
+                            <p class="proof-note" data-i18n="project.garage.note">Documentada con OpenAPI/Swagger autogenerado por FastAPI.</p>
+                        </div>
                     </div>
                 </article>
 
                  <article class="project-card" data-reveal>
                     <div class="project-card-header">
-                        <span class="project-number">PROY_002</span>
+                        <span class="project-number">MISIÓN_002</span>
                         <span class="project-year">2025</span>
                     </div>
-                    <h3 class="project-card-title" data-i18n="project.respira-cali.title">Respira Cali (Backend/Frontend)</h3>
+                    <h3 class="project-card-title" data-i18n="project.respira-cali.title">Respira Cali</h3>
+                    <p class="project-role" data-i18n="project.respira-cali.role">Rol: frontend + consumo de API pública</p>
                     <p class="project-card-desc" data-i18n="project.respira-cali.desc">
-                        Aplicación web desarrollada con HTML, CSS y Javascript para consultar y visualizar información sobre la calidad del aire en Cali. El proyecto fue construido con apoyo de herramientas de IA, pero con comprensión completa de la lógica implementada, el consumo de datos y la estructura del frontend.
+                        Consulta y visualiza la calidad del aire de Cali consumiendo una API REST. Mi aporte: arquitectura del frontend, manejo de estados de carga/error y presentación clara del dato.
                     </p>
+                    <ul class="outcome-list compact">
+                        <li><i class="fas fa-check"></i><span data-i18n="project.respira-cali.o1">Consumo REST con manejo de errores y reintentos</span></li>
+                        <li><i class="fas fa-check"></i><span data-i18n="project.respira-cali.o2">UI que explica el dato, no solo lo muestra</span></li>
+                    </ul>
                     <div class="project-tags">
                         <span class="tag-mono"><i class="fab fa-html5"></i> HTML5</span>
                         <span class="tag-mono"><i class="fab fa-css3-alt"></i> CSS3</span>
@@ -207,13 +263,18 @@
 
                 <article class="project-card" data-reveal>
                     <div class="project-card-header">
-                        <span class="project-number">PROY_003</span>
+                        <span class="project-number">MISIÓN_003</span>
                         <span class="project-year">2025</span>
                     </div>
-                    <h3 class="project-card-title" data-i18n="project.vehicle-management-frontend.title">vehicle-management-frontend</h3>
+                    <h3 class="project-card-title" data-i18n="project.vehicle-management-frontend.title">Garage Frontend (SPA)</h3>
+                    <p class="project-role" data-i18n="project.vehicle-management-frontend.role">Rol: SPA en Vanilla JS conectada a Garage API</p>
                     <p class="project-card-desc" data-i18n="project.vehicle-management-frontend.desc">
-                        Interfaz web interactiva (SPA) en Vanilla JS, HTML5 y CSS3 para la gestión de vehículos, mantenimientos preventivos y cálculo inteligente de servicios según el manual del propietario.
+                        Cliente de Garage API: gestión de vehículos y mantenimientos preventivos con cálculo de próximos servicios según manual del propietario.
                     </p>
+                    <ul class="outcome-list compact">
+                        <li><i class="fas fa-check"></i><span data-i18n="project.vehicle-management-frontend.o1">SPA sin framework: routing y estado propios</span></li>
+                        <li><i class="fas fa-check"></i><span data-i18n="project.vehicle-management-frontend.o2">Consume JWT de la API y refleja sus reglas</span></li>
+                    </ul>
                     <div class="project-tags">
                         <span class="tag-mono"><i class="fab fa-js"></i> Vanilla JS</span>
                         <span class="tag-mono"><i class="fab fa-html5"></i> HTML5</span>
