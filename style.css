@@ -46,32 +46,8 @@
   --radius-sm: 8px;
 }
 
-/* Light Theme Variables */
-[data-theme="light"] {
-  --bg: #f8fafc;
-  --bg-subtle: #f1f5f9;
-  --surface: rgba(255, 255, 255, 0.85);
-  --surface-hover: rgba(241, 245, 249, 0.95);
-  --surface-card: #ffffff;
-
-  --border: rgba(2, 132, 199, 0.15);
-  --border-hover: rgba(2, 132, 199, 0.4);
-  --border-solid: #e2e8f0;
-
-  --accent: #0284c7;
-  --accent-hover: #0369a1;
-  --accent-glow: rgba(2, 132, 199, 0.25);
-  --accent-emerald: #059669;
-  --secondary: #6366f1;
-
-  --text: #0f172a;
-  --text-muted: #475569;
-  --text-subtle: #64748b;
-
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
-}
+/* Light Theme: ver capa brutalismo al final (sobrescribe todo lo anterior) */
+/* (bloque claro original removido en optimización — estaba 100% sobrescrito) */
 
 @media (min-width: 768px) {
   :root {
@@ -1114,179 +1090,8 @@ section {
   }
 }
 
-/* ============ ORBITA — LUNAR VISUAL LAYER ============ */
-:root {
-  --bg: #070918;
-  --bg-subtle: #10142a;
-  --surface: rgba(17, 22, 45, 0.68);
-  --surface-hover: rgba(29, 37, 71, 0.82);
-  --surface-card: #11162e;
-  --border: rgba(180, 195, 255, 0.16);
-  --border-hover: rgba(202, 214, 255, 0.46);
-  --border-solid: #303a63;
-  --accent: #c9d5ff;
-  --accent-hover: #eef1ff;
-  --accent-glow: rgba(166, 186, 255, 0.25);
-  --accent-emerald: #a8c8ff;
-  --secondary: #9ca9df;
-  --text: #f4f6ff;
-  --text-muted: #b7c0dc;
-  --text-subtle: #818cab;
-  --shadow-sm: 0 3px 12px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.36);
-  --shadow-lg: 0 20px 54px rgba(0, 0, 0, 0.5);
-  --radius: 12px;
-  --radius-sm: 7px;
-}
-
-.bg-gradient {
-  background:
-    radial-gradient(circle at 76% 26%, rgba(195, 210, 255, 0.12), transparent 10%),
-    radial-gradient(ellipse 60% 42% at 75% 15%, rgba(85, 104, 175, 0.2), transparent 58%),
-    radial-gradient(ellipse 44% 38% at 8% 82%, rgba(84, 99, 159, 0.11), transparent 70%),
-    #070918;
-}
-
-.bg-gradient::before,
-.bg-gradient::after {
-  content: '';
-  position: fixed;
-  pointer-events: none;
-}
-
-.bg-gradient::before {
-  inset: 0;
-  opacity: 0.65;
-  background-image:
-    radial-gradient(circle at 13% 18%, #d9e2ff 0 1px, transparent 1.5px),
-    radial-gradient(circle at 29% 64%, #d9e2ff 0 1px, transparent 1.5px),
-    radial-gradient(circle at 48% 15%, #d9e2ff 0 1px, transparent 1.5px),
-    radial-gradient(circle at 66% 51%, #d9e2ff 0 1px, transparent 1.5px),
-    radial-gradient(circle at 88% 19%, #d9e2ff 0 1px, transparent 1.5px),
-    radial-gradient(circle at 93% 75%, #d9e2ff 0 1px, transparent 1.5px);
-}
-
-.bg-gradient::after {
-  width: 390px;
-  height: 390px;
-  top: 120px;
-  right: -150px;
-  border-radius: 50%;
-  opacity: 0.16;
-  background:
-    radial-gradient(circle at 37% 31%, #ffffff 0 5%, #d9e0f2 34%, #aeb8cf 68%, #77829c 100%);
-  box-shadow: 0 0 90px rgba(181, 199, 255, 0.28);
-}
-
-.nav {
-  background: rgba(7, 9, 24, 0.76);
-  border-bottom-color: rgba(189, 204, 255, 0.14);
-}
-
-.nav-logo::before {
-  width: 7px;
-  height: 7px;
-  background: var(--accent);
-  box-shadow: 0 0 11px var(--accent-glow);
-}
-
-.nav-link.active {
-  color: var(--text);
-  background: rgba(201, 213, 255, 0.12);
-}
-
-.lang-switcher { background: rgba(16, 20, 42, 0.7); }
-.lang-btn.active { background: var(--accent); color: #101426; }
-
-.scroll-progress { background: linear-gradient(90deg, #9daddf, #edf1ff); }
-
-.section-label { color: var(--accent); }
-.section-label::before { background: var(--accent); }
-
-.hero { min-height: 94vh; }
-
-.hero-title {
-  font-weight: 600;
-  letter-spacing: -0.045em;
-}
-
-.hero-title .accent { color: #dfe6ff; }
-
-.hero-badge {
-  color: #c5d8ff;
-  border-color: rgba(184, 209, 255, 0.3);
-  background: rgba(155, 185, 255, 0.08);
-}
-
-.hero-badge-dot,
-.pulse-dot {
-  background: #bdd3ff;
-  box-shadow: 0 0 10px rgba(189, 211, 255, 0.72);
-}
-
-.hero-role .prompt,
-.typed-cursor,
-.terminal-prompt-char,
-.terminal-cursor-block { color: var(--accent); background-color: var(--accent); }
-
-.hero-role .prompt,
-.terminal-prompt-char { background-color: transparent; }
-
-.btn-primary {
-  background: #e7ebff;
-  color: #11152a;
-}
-
-.btn-primary:hover {
-  background: #ffffff;
-  box-shadow: 0 8px 26px rgba(190, 204, 255, 0.26);
-}
-
-.btn-ghost { background: rgba(208, 218, 255, 0.035); }
-.btn-ghost:hover { border-color: var(--accent); color: var(--text); background: rgba(201, 213, 255, 0.1); }
-
-.hero-stats { border-top-color: rgba(185, 199, 255, 0.16); }
-
-.terminal {
-  background: rgba(8, 11, 26, 0.9);
-  border-color: #39446e;
-  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.44), 0 0 0 1px rgba(212, 222, 255, 0.035);
-}
-
-.terminal-header { background: #141a35; border-bottom-color: #313b62; }
-.terminal-dot.red { background: #c58698; }.terminal-dot.yellow { background: #d7c48b; }.terminal-dot.green { background: #a9cda8; }
-.terminal-output .ok, .status-value { color: #bdd3ff; }
-
-.project-card,
-.stack-category,
-.about-detail,
-.contact-card {
-  background: linear-gradient(145deg, rgba(25, 31, 59, 0.74), rgba(13, 17, 36, 0.76));
-  border-color: rgba(181, 196, 255, 0.16);
-}
-
-.project-card::before { background: linear-gradient(90deg, #d6dfff, transparent); }
-.project-card:hover,
-.stack-category:hover,
-.contact-card:hover { border-color: var(--border-hover); background: rgba(30, 38, 72, 0.86); }
-.project-number, .tag-mono i, .stack-category-icon, .stack-item i, .contact-icon { color: var(--accent); }
-.tag-mono, .stack-item { background: rgba(212, 220, 255, 0.045); border-color: rgba(183, 199, 255, 0.16); }
-.project-card:hover .tag-mono { border-color: rgba(207, 217, 255, 0.3); }
-.btn-card-primary { background: rgba(201, 213, 255, 0.08); border-color: rgba(201, 213, 255, 0.22); }
-.btn-card-primary:hover { background: var(--accent); border-color: var(--accent); color: #101426; }
-.stack-item:hover { border-color: var(--accent); background: rgba(201, 213, 255, 0.1); }
-
-.status-card { background: linear-gradient(145deg, #161c38, #0e1227); border-color: rgba(189, 204, 255, 0.2); }
-.status-card-header { border-bottom-color: rgba(189, 204, 255, 0.14); }
-.contact-icon { background: rgba(201, 213, 255, 0.08); border-color: rgba(201, 213, 255, 0.18); }
-.copy-email-btn { background: rgba(201, 213, 255, 0.07); border-color: rgba(201, 213, 255, 0.18); }
-.copy-email-btn:hover { color: var(--text); border-color: var(--accent); background: rgba(201, 213, 255, 0.12); }
-.copy-tooltip { background: var(--accent); color: #101426; }
-
-@media (max-width: 768px) {
-  .nav-links { background: rgba(7, 9, 24, 0.96); }
-  .bg-gradient::after { width: 260px; height: 260px; right: -130px; top: 95px; opacity: 0.12; }
-}
+/* ORBITA removida en optimización: toda la capa quedaba sobrescrita
+   por LUNA v3 + brutalismo. Se conserva la luna interactiva y el cielo canvas. */
 
 /* ============ THEME TOGGLE BUTTON ============ */
 .theme-toggle {
@@ -1436,9 +1241,7 @@ img[loading="lazy"] {
   --moon-glow: rgba(214, 224, 255, 0.35);
 }
 
-/* Apagamos la luna vieja dibujada en el fondo */
-.bg-gradient::after { display: none; }
-.bg-gradient::before { opacity: 0.35; }
+/* (luna vieja de ORBITA eliminada — ya no hay nada que apagar) */
 
 /* Cielo de estrellas */
 #starCanvas {
@@ -1520,10 +1323,7 @@ img[loading="lazy"] {
   transition: transform 0.9s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease;
 }
 [data-theme="light"] .moon-shadow { transform: translateX(24%); opacity: 1; }
-[data-theme="light"] .moon {
-  box-shadow: 0 0 30px rgba(2,132,199,0.25), 0 0 0 2px rgba(2,132,199,0.25), inset -10px -12px 30px rgba(0,0,0,0.35);
-  filter: saturate(0.85);
-}
+/* (fase clara de la luna movida a la capa brutalismo) */
 [data-theme="light"] #starCanvas { opacity: 0.18; }
 
 /* Órbita + satélite */
@@ -1570,17 +1370,8 @@ img[loading="lazy"] {
   background: rgba(10, 14, 30, 0.55);
   border: 1px solid var(--border);
   padding: 0.3rem 0.7rem;
-  border-radius: 100px;
-  backdrop-filter: blur(8px);
 }
-.moon-caption-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #dfe6ff;
-  box-shadow: 0 0 8px #dfe6ff;
-  animation: pulse 2.4s ease infinite;
-}
+/* (punto de fase movido a la capa brutalismo) */
 
 /* Toggle con fase */
 .theme-toggle { position: relative; gap: 0.4rem; }
@@ -1594,7 +1385,7 @@ img[loading="lazy"] {
 }
 [data-theme="light"] .phase-dot {
   background: transparent;
-  box-shadow: inset -2px 1px 0 1.5px #0284c7;
+  box-shadow: inset -2px 1px 0 1.5px var(--red);
 }
 
 /* Scroll hint lunar — en flujo, centrado, sin cortarse ni tapar la terminal */
@@ -1632,22 +1423,9 @@ img[loading="lazy"] {
   animation: wheelDrop 1.8s ease infinite;
 }
 
-/* Toques premium para reclutadores: hero más jerárquico */
-.hero-title { text-shadow: 0 2px 30px rgba(0,0,0,0.45); }
+/* (toques premium movidos a la capa brutalismo — ver final del archivo) */
 .hero-content { position: relative; }
-/* (línea lateral eliminada: en la captura se veía como raya suelta a la izquierda) */
-.project-card:hover { box-shadow: 0 14px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(210,220,255,0.12), 0 0 32px rgba(170,190,255,0.12); }
 .terminal { position: relative; }
-.terminal::after {
-  content: 'moonlink · secure';
-  position: absolute;
-  bottom: 8px;
-  right: 12px;
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  color: var(--text-subtle);
-  opacity: 0.7;
-}
 
 /* Animaciones */
 @keyframes orbitSpin { to { transform: rotate(360deg); } }
@@ -2097,6 +1875,9 @@ body {
 [data-reveal] { transform: translateY(14px); }
 
 /* ---- Responsive cartel ---- */
+@media (max-width: 768px) {
+  .nav-links { background: var(--bg); border-bottom: 3px solid var(--red); }
+}
 @media (max-width: 600px) {
   .hero-title { font-size: clamp(2.6rem, 14vw, 3.4rem); text-shadow: 3px 3px 0 var(--red); }
   .project-card, .stack-category, .contact-card, .status-card { box-shadow: 5px 5px 0 rgba(0,0,0,0.55); }

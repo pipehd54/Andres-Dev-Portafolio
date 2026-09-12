@@ -341,11 +341,20 @@ function initScrollProgress() {
     const bar = document.getElementById('scrollProgress');
     if (!bar) return;
 
-    window.addEventListener('scroll', () => {
+    // Throttle vía rAF: evita recalcular layout en cada evento de scroll
+    let queued = false;
+    function update() {
+        queued = false;
         const total = document.documentElement.scrollHeight - window.innerHeight;
         const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
-        bar.style.width = progress + '%';
+        bar.style.transform = `scaleX(${progress / 100})`;
+    }
+    bar.style.transformOrigin = '0 50%';
+    bar.style.width = '100%';
+    window.addEventListener('scroll', () => {
+        if (!queued) { queued = true; requestAnimationFrame(update); }
     }, { passive: true });
+    update();
 }
 
 // ========================================
@@ -428,6 +437,11 @@ function initTypewriter() {
 
     function tick() {
         if (!document.contains(el)) return;
+        // Pausa el ciclo con la pestaña oculta (ahorra CPU/batería)
+        if (document.hidden) {
+            el._timer = setTimeout(tick, 800);
+            return;
+        }
         const key = typewriterKeys[phraseIdx];
         const current = t(key) || '';
 
@@ -552,6 +566,19 @@ function initContactForm() {
         const formData = new FormData(form);
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
+
+        // Sin backend configurado (Formspree pendiente): fallback a email directo
+        if (!form.action || form.action.includes('YOUR_FORM_ID')) {
+            const name = (formData.get('name') || '').toString().trim();
+            const email = (formData.get('email') || '').toString().trim();
+            const message = (formData.get('message') || '').toString().trim();
+            const subject = encodeURIComponent(`Portfolio · ${name || 'Contacto'}`);
+            const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+            statusEl.textContent = t('form.mailto', 'Abriendo tu app de correo para enviar el mensaje…');
+            statusEl.className = 'form-status success';
+            window.location.href = `mailto:pipetimoty@gmail.com?subject=${subject}&body=${body}`;
+            return;
+        }
         
         // Disable button during submission
         submitBtn.disabled = true;
@@ -604,7 +631,7 @@ function initStarfield() {
     let shooting = [];
     let w = 0, h = 0, raf = null;
     let mx = 0, my = 0;
-    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+    const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
 
     function resize() {
         w = window.innerWidth;
@@ -700,7 +727,10 @@ function initStarfield() {
         else if (!document.hidden && !raf) { raf = requestAnimationFrame(frame); }
     });
 
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', () => {
+        clearTimeout(window._starResizeT);
+        window._starResizeT = setTimeout(resize, 200);
+    });
     resize();
     raf = requestAnimationFrame(frame);
     setTimeout(spawnShooting, 3500);
@@ -774,6 +804,7 @@ translations.en['form.submit'] = 'Send Message';
 translations.en['form.sending'] = 'Sending...';
 translations.en['form.success'] = 'Message sent successfully!';
 translations.en['form.error'] = 'Error sending. Please try again.';
+translations.en['form.mailto'] = 'Opening your mail app to send the message…';
 
 translations.es['form.name'] = 'Nombre';
 translations.es['form.email'] = 'Email';
@@ -782,5 +813,6 @@ translations.es['form.submit'] = 'Enviar Mensaje';
 translations.es['form.sending'] = 'Enviando...';
 translations.es['form.success'] = '¡Mensaje enviado con éxito!';
 translations.es['form.error'] = 'Error al enviar. Intenta de nuevo.';
+translations.es['form.mailto'] = 'Abriendo tu app de correo para enviar el mensaje…';
 translations.en['hero.scroll'] = 'Scroll to explore the orbit';
 translations.es['hero.scroll'] = 'Desliza para explorar la órbita';

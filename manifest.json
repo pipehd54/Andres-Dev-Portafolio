@@ -4,18 +4,18 @@
     "description": "Backend developer especializado en FastAPI, Django, PostgreSQL y ciberseguridad.",
     "start_url": "/portfolio/",
     "display": "standalone",
-    "background_color": "#070c18",
-    "theme_color": "#070c18",
+    "background_color": "#171310",
+    "theme_color": "#171310",
     "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "imagenes/imagen3.png",
+            "src": "imagenes/icon-192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "imagenes/imagen3.png",
+            "src": "imagenes/icon-512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
