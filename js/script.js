@@ -816,3 +816,34 @@ translations.es['form.error'] = 'Error al enviar. Intenta de nuevo.';
 translations.es['form.mailto'] = 'Abriendo tu app de correo para enviar el mensaje…';
 translations.en['hero.scroll'] = 'Scroll to explore the orbit';
 translations.es['hero.scroll'] = 'Desliza para explorar la órbita';
+
+// ========================================
+// DOSSIER TRANSLATIONS
+// ========================================
+translations.en['project.stamp'] = 'Featured ★';
+translations.en['project.meta.role'] = 'Role';
+translations.en['project.meta.state'] = 'Status';
+translations.en['project.meta.core'] = 'Core';
+translations.en['project.garage.frole'] = 'End-to-end backend';
+translations.en['project.garage.fstate'] = 'Done · documented';
+translations.en['project.garage.fcore'] = 'FastAPI · PostgreSQL';
+translations.en['project.respira-cali.frole'] = 'Frontend + public API';
+translations.en['project.respira-cali.fstate'] = 'Done';
+translations.en['project.respira-cali.fcore'] = 'JS · REST';
+translations.en['project.vehicle-management-frontend.frole'] = 'Framework-free SPA';
+translations.en['project.vehicle-management-frontend.fstate'] = 'Done';
+translations.en['project.vehicle-management-frontend.fcore'] = 'Vanilla JS · JWT';
+
+translations.es['project.stamp'] = 'Destacado ★';
+translations.es['project.meta.role'] = 'Rol';
+translations.es['project.meta.state'] = 'Estado';
+translations.es['project.meta.core'] = 'Núcleo';
+translations.es['project.garage.frole'] = 'Backend end-to-end';
+translations.es['project.garage.fstate'] = 'Completado · documentado';
+translations.es['project.garage.fcore'] = 'FastAPI · PostgreSQL';
+translations.es['project.respira-cali.frole'] = 'Frontend + API pública';
+translations.es['project.respira-cali.fstate'] = 'Completado';
+translations.es['project.respira-cali.fcore'] = 'JS · REST';
+translations.es['project.vehicle-management-frontend.frole'] = 'SPA sin framework';
+translations.es['project.vehicle-management-frontend.fstate'] = 'Completado';
+translations.es['project.vehicle-management-frontend.fcore'] = 'Vanilla JS · JWT';

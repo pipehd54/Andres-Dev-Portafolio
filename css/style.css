@@ -1887,3 +1887,78 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .ticker-track { animation: none; }
 }
+
+/* ============================================================
+   EXPEDIENTES — dossier sellado: número fantasma + ficha + sello
+   ============================================================ */
+.project-card-header { flex-wrap: wrap; gap: 0.5rem; }
+
+.dossier-num {
+  position: absolute;
+  top: 2rem;
+  right: 0.7rem;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 9vw, 7rem);
+  line-height: 1;
+  color: var(--border);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+}
+@supports (-webkit-text-stroke: 1px black) {
+  .dossier-num { color: transparent; -webkit-text-stroke: 2px var(--border); opacity: 0.9; }
+}
+
+.dossier-stamp {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  border: 3px solid var(--red);
+  background: var(--surface);
+  padding: 0.25rem 0.6rem;
+  transform: rotate(5deg);
+  box-shadow: 3px 3px 0 var(--red);
+  white-space: nowrap;
+}
+
+.ficha {
+  display: grid;
+  margin: 0 0 1.1rem;
+  border: 2px solid var(--border-solid);
+  background: var(--surface);
+}
+.ficha > div {
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  border-bottom: 2px solid var(--border-solid);
+}
+.ficha > div:last-child { border-bottom: none; }
+.ficha dt {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.45rem 0.6rem;
+  display: flex;
+  align-items: center;
+}
+.ficha dd {
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .ficha > div { grid-template-columns: 88px 1fr; }
+  .dossier-num { top: 2.6rem; font-size: 4rem; }
+  .dossier-stamp { transform: rotate(3deg); }
+}

@@ -190,14 +190,20 @@
             <div class="projects-grid">
                 <!-- Destacado: Garage API -->
                 <article class="project-card featured" data-reveal>
+                    <span class="dossier-num" aria-hidden="true">01</span>
                     <div class="project-card-header">
                         <span class="project-number"><i class="fas fa-star"></i> <span data-i18n="project.featured">Caso destacado · Backend</span></span>
                         <span class="project-year">2024</span>
+                        <span class="dossier-stamp" data-i18n="project.stamp">Destacado ★</span>
                     </div>
                     <div class="featured-grid">
                         <div class="featured-main">
                             <h3 class="project-card-title" data-i18n="project.garage.title">Garage API (Backend)</h3>
-                            <p class="project-role" data-i18n="project.garage.role">Rol: diseño y construcción end-to-end — FastAPI + PostgreSQL</p>
+                            <dl class="ficha">
+                                <div><dt data-i18n="project.meta.role">Rol</dt><dd data-i18n="project.garage.frole">Backend end-to-end</dd></div>
+                                <div><dt data-i18n="project.meta.state">Estado</dt><dd data-i18n="project.garage.fstate">Completado · documentado</dd></div>
+                                <div><dt data-i18n="project.meta.core">Núcleo</dt><dd data-i18n="project.garage.fcore">FastAPI · PostgreSQL</dd></div>
+                            </dl>
                             <p class="project-card-desc" data-i18n="project.garage.desc">
                                 Problema: llevar el control de mantenimiento vehicular (vehículos, servicios, historial) a una API ordenada y segura en vez de registros sueltos. Decisión: FastAPI asíncrono, autenticación JWT con Bcrypt, validación estricta con Pydantic y migraciones versionadas con Alembic.
                             </p>
@@ -235,12 +241,17 @@ $ alembic upgrade head → esquema al día</code></pre>
                 </article>
 
                  <article class="project-card" data-reveal>
+                    <span class="dossier-num" aria-hidden="true">02</span>
                     <div class="project-card-header">
-                        <span class="project-number">MISIÓN_002</span>
+                        <span class="project-number">EXP_002</span>
                         <span class="project-year">2025</span>
                     </div>
                     <h3 class="project-card-title" data-i18n="project.respira-cali.title">Respira Cali</h3>
-                    <p class="project-role" data-i18n="project.respira-cali.role">Rol: frontend + consumo de API pública</p>
+                    <dl class="ficha">
+                        <div><dt data-i18n="project.meta.role">Rol</dt><dd data-i18n="project.respira-cali.frole">Frontend + API pública</dd></div>
+                        <div><dt data-i18n="project.meta.state">Estado</dt><dd data-i18n="project.respira-cali.fstate">Completado</dd></div>
+                        <div><dt data-i18n="project.meta.core">Núcleo</dt><dd data-i18n="project.respira-cali.fcore">JS · REST</dd></div>
+                    </dl>
                     <p class="project-card-desc" data-i18n="project.respira-cali.desc">
                         Consulta y visualiza la calidad del aire de Cali consumiendo una API REST. Mi aporte: arquitectura del frontend, manejo de estados de carga/error y presentación clara del dato.
                     </p>
@@ -263,12 +274,17 @@ $ alembic upgrade head → esquema al día</code></pre>
                 </article>
 
                 <article class="project-card" data-reveal>
+                    <span class="dossier-num" aria-hidden="true">03</span>
                     <div class="project-card-header">
-                        <span class="project-number">MISIÓN_003</span>
+                        <span class="project-number">EXP_003</span>
                         <span class="project-year">2025</span>
                     </div>
                     <h3 class="project-card-title" data-i18n="project.vehicle-management-frontend.title">Garage Frontend (SPA)</h3>
-                    <p class="project-role" data-i18n="project.vehicle-management-frontend.role">Rol: SPA en Vanilla JS conectada a Garage API</p>
+                    <dl class="ficha">
+                        <div><dt data-i18n="project.meta.role">Rol</dt><dd data-i18n="project.vehicle-management-frontend.frole">SPA sin framework</dd></div>
+                        <div><dt data-i18n="project.meta.state">Estado</dt><dd data-i18n="project.vehicle-management-frontend.fstate">Completado</dd></div>
+                        <div><dt data-i18n="project.meta.core">Núcleo</dt><dd data-i18n="project.vehicle-management-frontend.fcore">Vanilla JS · JWT</dd></div>
+                    </dl>
                     <p class="project-card-desc" data-i18n="project.vehicle-management-frontend.desc">
                         Cliente de Garage API: gestión de vehículos y mantenimientos preventivos con cálculo de próximos servicios según manual del propietario.
                     </p>
