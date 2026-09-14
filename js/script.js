@@ -7,6 +7,7 @@ const translations = {
         'nav.home': 'Home',
         'nav.projects': 'Projects',
         'nav.stack': 'Stack',
+        'nav.support': 'IT Support',
         'nav.about': 'About me',
         'nav.contact': 'Contact',
 
@@ -54,7 +55,7 @@ const translations = {
         'stack.focus': 'Security & Tools',
 
         // About Section
-        'section.about.label': '04 / About me',
+        'section.about.label': '05 / About me',
         'section.about.title': 'Professional profile',
         'about.security': 'Security Focus',
         'about.security.value': 'JWT authentication, password hashing and security best practices',
@@ -68,7 +69,7 @@ const translations = {
         'status.core_stack': 'Core Stack:',
 
         // Contact Section
-        'section.contact.label': '05 / Contact',
+        'section.contact.label': '06 / Contact',
         'section.contact.title': 'Let\'s talk',
         'section.contact.subtitle': 'Have a project in mind or a job opportunity? Send me a direct message.',
         'contact.copy': 'Copy',
@@ -89,6 +90,7 @@ const translations = {
         'nav.home': 'Inicio',
         'nav.projects': 'Proyectos',
         'nav.stack': 'Stack',
+        'nav.support': 'Soporte TI',
         'nav.about': 'Sobre mí',
         'nav.contact': 'Contacto',
 
@@ -136,7 +138,7 @@ const translations = {
         'stack.focus': 'Seguridad & Herramientas',
 
         // About Section
-        'section.about.label': '04 / Sobre mí',
+        'section.about.label': '05 / Sobre mí',
         'section.about.title': 'Perfil profesional',
         'about.security': 'Enfoque de Seguridad',
         'about.security.value': 'Autenticación JWT, hash de contraseñas y buenas prácticas de seguridad',
@@ -150,7 +152,7 @@ const translations = {
         'status.core_stack': 'Stack Principal:',
 
         // Contact Section
-        'section.contact.label': '05 / Contacto',
+        'section.contact.label': '06 / Contacto',
         'section.contact.title': 'Hablemos',
         'section.contact.subtitle': '¿Tienes un proyecto en mente o una oportunidad laboral? Envíame un mensaje directo.',
         'contact.copy': 'Copiar',
@@ -847,3 +849,46 @@ translations.es['project.respira-cali.fcore'] = 'JS · REST';
 translations.es['project.vehicle-management-frontend.frole'] = 'SPA sin framework';
 translations.es['project.vehicle-management-frontend.fstate'] = 'Completado';
 translations.es['project.vehicle-management-frontend.fcore'] = 'Vanilla JS · JWT';
+
+// ========================================
+// SOPORTE TI TRANSLATIONS
+// ========================================
+translations.en['section.support.label'] = '04 / IT Support';
+translations.en['section.support.title'] = 'Complementary skills';
+translations.en['section.support.subtitle'] = 'Technical foundation for user support and infrastructure: systems, networks and task automation.';
+translations.en['support.1.title'] = 'Windows';
+translations.en['support.1.desc'] = 'Installation, setup and user support.';
+translations.en['support.2.title'] = 'Linux';
+translations.en['support.2.desc'] = 'Basic commands and system management.';
+translations.en['support.3.title'] = 'Basic networking';
+translations.en['support.3.desc'] = 'TCP/IP, addressing and connectivity.';
+translations.en['support.4.title'] = 'Troubleshooting';
+translations.en['support.4.desc'] = 'Detecting and fixing hardware and software failures.';
+translations.en['support.5.title'] = 'Git & GitHub';
+translations.en['support.5.desc'] = 'Version control and collaborative work.';
+translations.en['support.6.title'] = 'Microsoft Excel';
+translations.en['support.6.desc'] = 'Tables, formulas and data organization.';
+translations.en['support.7.title'] = 'Python automation';
+translations.en['support.7.desc'] = 'Scripts that remove repetitive tasks.';
+translations.en['support.8.title'] = 'Cybersecurity basics';
+translations.en['support.8.desc'] = 'Best practices and basic protection.';
+
+translations.es['section.support.label'] = '04 / Soporte TI';
+translations.es['section.support.title'] = 'Conocimientos complementarios';
+translations.es['section.support.subtitle'] = 'Base técnica para soporte a usuarios e infraestructura: sistemas, redes y automatización de tareas.';
+translations.es['support.1.title'] = 'Windows';
+translations.es['support.1.desc'] = 'Instalación, configuración y soporte a usuarios.';
+translations.es['support.2.title'] = 'Linux';
+translations.es['support.2.desc'] = 'Comandos básicos y gestión del sistema.';
+translations.es['support.3.title'] = 'Redes básicas';
+translations.es['support.3.desc'] = 'TCP/IP, direccionamiento y conectividad.';
+translations.es['support.4.title'] = 'Diagnóstico de problemas';
+translations.es['support.4.desc'] = 'Detección y resolución de fallas de hardware y software.';
+translations.es['support.5.title'] = 'Git y GitHub';
+translations.es['support.5.desc'] = 'Control de versiones y trabajo colaborativo.';
+translations.es['support.6.title'] = 'Microsoft Excel';
+translations.es['support.6.desc'] = 'Tablas, fórmulas y organización de datos.';
+translations.es['support.7.title'] = 'Automatización con Python';
+translations.es['support.7.desc'] = 'Scripts para eliminar tareas repetitivas.';
+translations.es['support.8.title'] = 'Fundamentos de ciberseguridad';
+translations.es['support.8.desc'] = 'Buenas prácticas y protección básica.';
