@@ -56,8 +56,6 @@ const translations = {
         // About Section
         'section.about.label': '04 / About me',
         'section.about.title': 'Professional profile',
-        'about.experience': 'Experience',
-        'about.experience.value': 'Freelance Backend Dev (~1 year)',
         'about.security': 'Security Focus',
         'about.security.value': 'Encrypted Data Management & Secure Auth',
         'status.active': 'SEEKING OPPORTUNITIES',
@@ -139,8 +137,6 @@ const translations = {
         // About Section
         'section.about.label': '04 / Sobre mí',
         'section.about.title': 'Perfil profesional',
-        'about.experience': 'Experiencia',
-        'about.experience.value': 'Desarrollador Backend Freelance (~1 año)',
         'about.security': 'Enfoque de Seguridad',
         'about.security.value': 'Gestión de Datos Encriptados & Autenticación Segura',
         'status.active': 'BUSCANDO OPORTUNIDADES',
