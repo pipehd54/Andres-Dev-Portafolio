@@ -8,6 +8,7 @@ const translations = {
         'nav.projects': 'Projects',
         'nav.stack': 'Stack',
         'nav.support': 'IT Support',
+        'nav.certs': 'Certificates',
         'nav.about': 'About me',
         'nav.contact': 'Contact',
 
@@ -55,7 +56,7 @@ const translations = {
         'stack.focus': 'Security & Tools',
 
         // About Section
-        'section.about.label': '05 / About me',
+        'section.about.label': '06 / About me',
         'section.about.title': 'Professional profile',
         'about.security': 'Security Focus',
         'about.security.value': 'JWT authentication, password hashing and security best practices',
@@ -69,7 +70,7 @@ const translations = {
         'status.core_stack': 'Core Stack:',
 
         // Contact Section
-        'section.contact.label': '06 / Contact',
+        'section.contact.label': '07 / Contact',
         'section.contact.title': 'Let\'s talk',
         'section.contact.subtitle': 'Have a project in mind or a job opportunity? Send me a direct message.',
         'contact.copy': 'Copy',
@@ -91,6 +92,7 @@ const translations = {
         'nav.projects': 'Proyectos',
         'nav.stack': 'Stack',
         'nav.support': 'Soporte TI',
+        'nav.certs': 'Certificados',
         'nav.about': 'Sobre mí',
         'nav.contact': 'Contacto',
 
@@ -138,7 +140,7 @@ const translations = {
         'stack.focus': 'Seguridad & Herramientas',
 
         // About Section
-        'section.about.label': '05 / Sobre mí',
+        'section.about.label': '06 / Sobre mí',
         'section.about.title': 'Perfil profesional',
         'about.security': 'Enfoque de Seguridad',
         'about.security.value': 'Autenticación JWT, hash de contraseñas y buenas prácticas de seguridad',
@@ -152,7 +154,7 @@ const translations = {
         'status.core_stack': 'Stack Principal:',
 
         // Contact Section
-        'section.contact.label': '06 / Contacto',
+        'section.contact.label': '07 / Contacto',
         'section.contact.title': 'Hablemos',
         'section.contact.subtitle': '¿Tienes un proyecto en mente o una oportunidad laboral? Envíame un mensaje directo.',
         'contact.copy': 'Copiar',
@@ -892,3 +894,22 @@ translations.es['support.7.title'] = 'Automatización con Python';
 translations.es['support.7.desc'] = 'Scripts para eliminar tareas repetitivas.';
 translations.es['support.8.title'] = 'Fundamentos de ciberseguridad';
 translations.es['support.8.desc'] = 'Buenas prácticas y protección básica.';
+
+// ========================================
+// CERTIFICADOS TRANSLATIONS
+// ========================================
+translations.en['section.certs.label'] = '05 / Certificates';
+translations.en['section.certs.title'] = 'Verifiable training';
+translations.en['section.certs.subtitle'] = 'Certifications with public credential: open each link to verify them.';
+translations.en['cert.1.title'] = 'Cybersecurity Foundations';
+translations.en['cert.2.title'] = 'Play It Safe: Manage Security Risks';
+translations.en['cert.3.title'] = 'Connect and Protect: Networks and Network Security';
+translations.en['cert.verify'] = 'Verify credential';
+
+translations.es['section.certs.label'] = '05 / Certificados';
+translations.es['section.certs.title'] = 'Formación verificable';
+translations.es['section.certs.subtitle'] = 'Certificaciones con credencial pública: puedes abrir cada enlace y comprobarlas.';
+translations.es['cert.1.title'] = 'Fundamentos de la Ciberseguridad';
+translations.es['cert.2.title'] = 'Play It Safe: Manage Security Risks';
+translations.es['cert.3.title'] = 'Connect and Protect: Networks and Network Security';
+translations.es['cert.verify'] = 'Verificar credencial';

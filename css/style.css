@@ -2038,3 +2038,72 @@ body {
   line-height: 1.55;
   margin: 0;
 }
+
+/* ============================================================
+   CERTIFICADOS — filas verificables estilo expediente
+   ============================================================ */
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cert-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 1.1rem;
+  background: var(--surface);
+  border: 3px solid var(--border-solid);
+  border-left: 8px solid var(--red);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.55);
+  padding: 1.1rem 1.3rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+  overflow: hidden;
+}
+[data-theme="light"] .cert-row { box-shadow: 6px 6px 0 var(--ink); }
+.cert-row:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--red);
+}
+.cert-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--red);
+  line-height: 1;
+}
+.cert-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--border-solid);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+.cert-info h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+.cert-org {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.cert-link { white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .cert-row { grid-template-columns: auto 1fr; }
+  .cert-num { display: none; }
+  .cert-link { grid-column: 1 / -1; justify-content: center; }
+}
